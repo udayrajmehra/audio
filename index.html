@@ -211,6 +211,11 @@
     });
 
 
+    function parseCSV(csvData) {
+      const parsedData = Papa.parse(csvData, { header: true }).data;
+      return parsedData;
+    }
+
     function fetchTrackData() {
       const serverlessFunctionURL = '/.netlify/functions/googleSheets';
 
