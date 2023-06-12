@@ -212,6 +212,12 @@
 
 
     function parseCSV(csvData) {
+      // Check if csvData is a string
+      if (typeof csvData !== 'string') {
+        console.error('Invalid data format. Expected a string.');
+        return [];
+      }
+
       // Split the CSV data into lines
       const lines = csvData.split('\n');
 
@@ -235,7 +241,6 @@
 
       return data;
     }
-
 
     function fetchTrackData() {
       const serverlessFunctionURL = '/.netlify/functions/googleSheets';
