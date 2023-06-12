@@ -1,6 +1,11 @@
 const fetch = require('node-fetch');
 const Papa = require('papaparse');
 
+function parseCSV(csvData) {
+    const parsedData = Papa.parse(csvData, { header: true }).data;
+    return parsedData;
+  }
+
 exports.handler = async (event, context) => {
   try {
     const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_Oq8Do15RWSHJ5kUhmRET7E5Lw7wCxOByJtmXQ-ACs4DEPZVATqi-rCwX7COgibDaI06qUnbutDP1/pub?gid=0&single=true&output=csv';
@@ -58,8 +63,3 @@ exports.handler = async (event, context) => {
     };
   }
 };
-
-function parseCSV(csvData) {
-  const parsedData = Papa.parse(csvData, { header: true }).data;
-  return parsedData;
-}
