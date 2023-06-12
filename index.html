@@ -211,7 +211,7 @@
     });
 
     function fetchTrackData() {
-      const serverlessFunctionURL = '/.netlify/functions/googleSheetsProxy';
+      const serverlessFunctionURL = '/.netlify/functions/googleSheets';
 
       fetch(serverlessFunctionURL)
         .then(response => response.json())
