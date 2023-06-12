@@ -210,104 +210,37 @@
       icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 
-    // Function to fetch and process track data from Google Sheet
     function fetchTrackData() {
-      const googleSheetURL = 'https://spreadsheets.google.com/feeds/list/1OHw551dmwyeiHf-wgKv5gWPxnQKOPEPTQwtFDFj4_Dc/1/public/values?alt=json';
+      const serverlessFunctionURL = '/.netlify/functions/googleSheetsProxy';
 
-      // Fetch the data from the Google Sheet URL
-      fetch(googleSheetURL)
+      fetch(serverlessFunctionURL)
         .then(response => response.json())
         .then(data => {
-          const entries = data.feed.entry;
+          // Process the received track data and dynamically add tracks to your website
+          Object.entries(data).forEach(([sectionName, tracks]) => {
+            // Create a section element for each section
+            const sectionElement = document.createElement('section');
+            sectionElement.className = 'track-section';
+            sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
 
-          // Create an object to store track orders for each section
-          const trackOrders = {
-            'Studio Discography': [],
-            'Live Sessions': []
-          };
+            // Create a heading for the section
+            const headingElement = document.createElement('h2');
+            headingElement.textContent = sectionName;
+            sectionElement.appendChild(headingElement);
 
-          // Loop through each entry and extract the track information
-          entries.forEach(entry => {
-            const trackName = entry.gsx$trackname.$t;
-            const metadata = entry.gsx$metadata.$t;
-            const spotifyURI = entry.gsx$spotifyuri.$t;
-            const youtubeTrackID = entry.gsx$youtubetrackid.$t;
-            const sectionPlacement = entry.gsx$sectionplacement.$t;
-            const order = parseInt(entry.gsx$order.$t);
-            const recorded = entry.gsx$recorded.$t === 'True';
-            const mixed = entry.gsx$mixed.$t === 'True';
-            const mastered = entry.gsx$mastered.$t === 'True';
+            // Add each track to the section
+            tracks.forEach(track => {
+              const trackElement = document.createElement('div');
+              trackElement.className = 'track';
+              trackElement.textContent = track.trackName;
 
-            // Skip the track if both Spotify URI and YouTube Track ID are 'null'
-            if (spotifyURI === 'null' && youtubeTrackID === 'null') {
-              return;
-            }
-
-            // Add the track order to the corresponding section
-            trackOrders[sectionPlacement].push({
-              order,
-              trackName,
-              metadata,
-              spotifyURI,
-              youtubeTrackID,
-              recorded,
-              mixed,
-              mastered
+              // Add trackElement to the appropriate section on your website
+              // ...
+              sectionElement.appendChild(trackElement);
             });
-          });
 
-          // Sort the track orders within each section
-          Object.values(trackOrders).forEach(section => {
-            section.sort((a, b) => a.order - b.order);
-          });
-
-          // Loop through each section and dynamically add tracks to your website
-          Object.entries(trackOrders).forEach(([sectionPlacement, sectionTracks]) => {
-            // Get the section table body element
-            const sectionTableBody = sectionPlacement === 'Studio Discography'
-              ? document.querySelector('#studio-discography tbody')
-              : document.querySelector('#live-sessions tbody');
-
-            // Loop through each track in the section
-            sectionTracks.forEach(track => {
-              const {
-                trackName,
-                metadata,
-                spotifyURI,
-                youtubeTrackID,
-                recorded,
-                mixed,
-                mastered
-              } = track;
-
-              // Dynamically add the track to the appropriate section on your website
-              const trackEntry = document.createElement('tr');
-              trackEntry.innerHTML = `
-                <td>
-                  <div class="song-entry">
-                    <span>${trackName}</span>
-                    <div class="icon-container">
-                      ${spotifyURI !== 'null' ? `
-                        <a href="#" class="spotify-icon" data-song="${spotifyURI}" data-type="${metadata}">
-                          <img src="resources/spotify-icon.png" alt="Spotify Icon">
-                        </a>
-                      ` : ''}
-                      ${youtubeTrackID !== 'null' ? `
-                        <a href="#" class="${metadata === 'album' ? 'youtube-album-icon' : 'youtube-icon'}" ${metadata === 'song' ? `data-video="${youtubeTrackID}"` : `data-playlist="${youtubeTrackID}"`}>
-                          <img src="resources/youtube-icon.png" alt="YouTube Icon">
-                        </a>
-                      ` : ''}
-                    </div>
-                  </div>
-                </td>
-                <td class="${recorded ? 'checkmark checkmark-recorded' : 'checkmark-off checkmark-recorded'}"></td>
-                <td class="${mixed ? 'checkmark checkmark-mixed' : 'checkmark-off checkmark-mixed'}"></td>
-                <td class="${mastered ? 'checkmark checkmark-mastered' : 'checkmark-off checkmark-mastered'}"></td>
-              `;
-
-              // Append the track entry to the section table body
-              sectionTableBody.appendChild(trackEntry);
-            });
+            // Add the section to the page
+            document.getElementById('track-list').appendChild(sectionElement);
           });
         })
         .catch(error => {
@@ -317,7 +250,6 @@
 
     // Call the fetchTrackData function to fetch and process track data
     fetchTrackData();
-
 
   </script>
 </body>
