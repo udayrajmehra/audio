@@ -210,12 +210,25 @@
       icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 
+
     function fetchTrackData() {
       const serverlessFunctionURL = '/.netlify/functions/googleSheets';
 
       fetch(serverlessFunctionURL)
         .then(response => response.json())
         .then(data => {
+
+          if (typeof data !== 'object') {
+            console.error('Invalid data format. Expected an object.');
+            return;
+          }
+
+          Object.entries(data).forEach(([sectionName, tracks]) => {
+            if (!Array.isArray(tracks)) {
+              console.error(`Invalid data format for section "${sectionName}". Expected an array.`);
+              return;
+            }
+
           // Process the received track data and dynamically add tracks to your website
           Object.entries(data).forEach(([sectionName, tracks]) => {
             // Create a section element for each section
