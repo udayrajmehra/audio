@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Audio Engineer Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    function toggleEmbed(embedId) {
+      const embeds = document.getElementsByClassName('embed-container');
+      for (let i = 0; i < embeds.length; i++) {
+        const embed = embeds[i];
+        if (embed.id === embedId) {
+          embed.classList.toggle('active-embed');
+        } else {
+          embed.classList.remove('active-embed');
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <img style="max-width:100%; max-height:100%; align-self: flex-end;" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_White.png" alt="Spotify Logo">
+    </div>
+  </header>
+
+  <main>
+    <section class="parallax">
+      <div class="parallax-content">
+        <div class="parallax-text">
+          <h1 class="greeting">Hi, I'm Uday.</h1>
+          <h2>Check out this track I engineered:</h2>
+          <div style="margin-top:10px; height: 80px;" id="spotifyEmbed">
+            <iframe src="https://open.spotify.com/embed/track/1QaukZ97gsgrb7G1WC2vx6?utm_source=generator&theme=0" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <p style="margin-top:10px;">I'm a driven audio engineer dedicated to delivering exceptional results. With training from industry mentors and practical experience in recording music and mixing podcasts, I bring a professional and easygoing approach to every project.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+      <h3>Studio Discography</h3>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Recorded</th>
+            <th>Mixed</th>
+            <th>Mastered</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            
+          </tr>
+          <tr>
+            
+          </tr>
+          <!-- Add more songs here -->
+        </tbody>
+      </table>
+      <button class="see-more">See more</button>
+
+      <h3>Live Sessions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Recorded</th>
+            <th>Mixed</th>
+            <th>Mastered</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            
+          </tr>
+          <tr>
+            
+          </tr>
+          <!-- Add more songs here -->
+        </tbody>
+      </table>
+      <button class="see-more">See more</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2023 Uday Mehra</p>
+      <p class="footer-text">Photo by <a href="https://unsplash.com/@woods">Joe Woods</a> on Unsplash</p>
+    </div>
+  </footer>
+
+  <script>
+    // Get all the Spotify and YouTube icons
+    const spotifyIcons = document.querySelectorAll('.spotify-icon');
+    const youtubeIcons = document.querySelectorAll('.youtube-icon');
+    const youtubeAlbumIcons = document.querySelectorAll('.youtube-album-icon');
+
+    // Function to handle Spotify icon click event
+    function handleSpotifyIconClick(event) {
+    event.preventDefault();
+    const songId = this.getAttribute('data-song');
+    const embedType = this.getAttribute('data-type');
+  
+    // Remove existing embeds
+    const existingEmbeds = document.querySelectorAll('.embedBox');
+    existingEmbeds.forEach(embed => {
+      embed.remove();
+    });
+
+    if (embedType === 'album') {
+      const embedCode = `<iframe src="https://open.spotify.com/embed/album/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+      const songEntry = this.closest('.song-entry');
+      const embedContainer = document.createElement('div');
+      embedContainer.classList.add('embedBox');
+      embedContainer.innerHTML = embedCode;
+      songEntry.appendChild(embedContainer);
+    } else if (embedType === 'song') {
+      const embedCode = `<iframe src="https://open.spotify.com/embed/track/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+      const songEntry = this.closest('.song-entry');
+      const embedContainer = document.createElement('div');
+      embedContainer.classList.add('embedBox');
+      embedContainer.innerHTML = embedCode;
+      songEntry.appendChild(embedContainer);
+      }
+    }
+
+    // Function to handle YouTube icon click event
+    function handleYoutubeIconClick(event) {
+      event.preventDefault();
+      const videoId = this.getAttribute('data-video');
+      const songEntry = this.closest('.song-entry');
+      const embedContainers = document.querySelectorAll('.song-entry .embedBox');
+
+      // Remove existing embeds from other song entries
+      embedContainers.forEach(container => {
+        if (container.closest('.song-entry') !== songEntry) {
+          container.remove();
+        }
+      });
+
+      const embedCode = `<iframe class="embedBox" width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const embedContainersWithinEntry = songEntry.querySelectorAll('.embedBox');
+
+      // Remove existing embeds within the current song entry
+      embedContainersWithinEntry.forEach(container => {
+        container.remove();
+      });
+
+      // Create a new embed container and append the embed code
+      const newEmbedContainer = document.createElement('div');
+      newEmbedContainer.innerHTML = embedCode;
+      songEntry.appendChild(newEmbedContainer);
+    }
+
+
+    function handleYoutubeAlbumClick(event) {
+      event.preventDefault();
+      const playlistId = this.getAttribute('data-playlist');
+      const songEntry = this.closest('.song-entry');
+      const embedContainers = document.querySelectorAll('.song-entry .embedBox');
+
+      // Remove existing embeds from other song entries
+      embedContainers.forEach(container => {
+        if (container.closest('.song-entry') !== songEntry) {
+          container.remove();
+        }
+      });
+
+      const embedCode = `<iframe class="embedBox" width="560" height="315" src="https://www.youtube.com/embed?listType=playlist&list=${playlistId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const embedContainersWithinEntry = songEntry.querySelectorAll('.embedBox');
+
+      // Remove existing embeds within the current song entry
+      embedContainersWithinEntry.forEach(container => {
+        container.remove();
+      });
+
+      // Create a new embed container and append the embed code
+      const newEmbedContainer = document.createElement('div');
+      newEmbedContainer.innerHTML = embedCode;
+      songEntry.appendChild(newEmbedContainer);
+    }
+
+    // Attach click event listeners to the Spotify icons
+    spotifyIcons.forEach(icon => {
+      icon.addEventListener('click', handleSpotifyIconClick);
+    });
+
+    // Attach click event listeners to the YouTube icons
+    youtubeIcons.forEach(icon => {
+      icon.addEventListener('click', handleYoutubeIconClick);
+    });
+
+    // Attach click event listeners to the YouTube album icons
+    youtubeAlbumIcons.forEach(icon => {
+      icon.addEventListener('click', handleYoutubeAlbumClick);
+    });
+
+    // Function to fetch and process track data from Google Sheet
+    function fetchTrackData() {
+      const googleSheetURL = 'https://spreadsheets.google.com/feeds/list/1OHw551dmwyeiHf-wgKv5gWPxnQKOPEPTQwtFDFj4_Dc/1/public/values?alt=json';
+
+      // Fetch the data from the Google Sheet URL
+      fetch(googleSheetURL)
+        .then(response => response.json())
+        .then(data => {
+          const entries = data.feed.entry;
+
+          // Create an object to store track orders for each section
+          const trackOrders = {
+            'Studio Discography': [],
+            'Live Sessions': []
+          };
+
+          // Loop through each entry and extract the track information
+          entries.forEach(entry => {
+            const trackName = entry.gsx$trackname.$t;
+            const metadata = entry.gsx$metadata.$t;
+            const spotifyURI = entry.gsx$spotifyuri.$t;
+            const youtubeTrackID = entry.gsx$youtubetrackid.$t;
+            const sectionPlacement = entry.gsx$sectionplacement.$t;
+            const order = parseInt(entry.gsx$order.$t);
+            const recorded = entry.gsx$recorded.$t === 'True';
+            const mixed = entry.gsx$mixed.$t === 'True';
+            const mastered = entry.gsx$mastered.$t === 'True';
+
+            // Skip the track if both Spotify URI and YouTube Track ID are 'null'
+            if (spotifyURI === 'null' && youtubeTrackID === 'null') {
+              return;
+            }
+
+            // Add the track order to the corresponding section
+            trackOrders[sectionPlacement].push({
+              order,
+              trackName,
+              metadata,
+              spotifyURI,
+              youtubeTrackID,
+              recorded,
+              mixed,
+              mastered
+            });
+          });
+
+          // Sort the track orders within each section
+          Object.values(trackOrders).forEach(section => {
+            section.sort((a, b) => a.order - b.order);
+          });
+
+          // Loop through each section and dynamically add tracks to your website
+          Object.entries(trackOrders).forEach(([sectionPlacement, sectionTracks]) => {
+            // Get the section table body element
+            const sectionTableBody = sectionPlacement === 'Studio Discography'
+              ? document.querySelector('#studio-discography tbody')
+              : document.querySelector('#live-sessions tbody');
+
+            // Loop through each track in the section
+            sectionTracks.forEach(track => {
+              const {
+                trackName,
+                metadata,
+                spotifyURI,
+                youtubeTrackID,
+                recorded,
+                mixed,
+                mastered
+              } = track;
+
+              // Dynamically add the track to the appropriate section on your website
+              const trackEntry = document.createElement('tr');
+              trackEntry.innerHTML = `
+                <td>
+                  <div class="song-entry">
+                    <span>${trackName}</span>
+                    <div class="icon-container">
+                      ${spotifyURI !== 'null' ? `
+                        <a href="#" class="spotify-icon" data-song="${spotifyURI}" data-type="${metadata}">
+                          <img src="resources/spotify-icon.png" alt="Spotify Icon">
+                        </a>
+                      ` : ''}
+                      ${youtubeTrackID !== 'null' ? `
+                        <a href="#" class="${metadata === 'album' ? 'youtube-album-icon' : 'youtube-icon'}" ${metadata === 'song' ? `data-video="${youtubeTrackID}"` : `data-playlist="${youtubeTrackID}"`}>
+                          <img src="resources/youtube-icon.png" alt="YouTube Icon">
+                        </a>
+                      ` : ''}
+                    </div>
+                  </div>
+                </td>
+                <td class="${recorded ? 'checkmark checkmark-recorded' : 'checkmark-off checkmark-recorded'}"></td>
+                <td class="${mixed ? 'checkmark checkmark-mixed' : 'checkmark-off checkmark-mixed'}"></td>
+                <td class="${mastered ? 'checkmark checkmark-mastered' : 'checkmark-off checkmark-mastered'}"></td>
+              `;
+
+              // Append the track entry to the section table body
+              sectionTableBody.appendChild(trackEntry);
+            });
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching track data:', error);
+        });
+    }
+
+    // Call the fetchTrackData function to fetch and process track data
+    fetchTrackData();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+/* Reset default browser styles */
+html,
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styles */
+body {
+  font-family: "Proxima Nova", Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #1c1c1c;
+  color: #e0e0e0;
+}
+
+header {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+header .header-content {
+  height: 20px; /* Adjust the initial height as needed */
+  background-color: #1c1c1c;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header .header-text {
+  color: #b0b0b0;
+  margin-bottom: 0;
+  line-height: 10px; /* Set line height to match the header height */
+}
+
+a {
+  color: #4acfa2;
+  cursor: pointer;
+}
+
+p {
+  text-align: left;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
+
+header h2 {
+  font-size: 18px;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
+
+h1.greeting {
+  margin-bottom: 30px;
+  line-height: 3;
+  font-family: "Lato", sans-serif;
+  font-size: 30px;
+}
+
+header p {
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 22px;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 18px;
+  color: #e0e0e0;
+  margin-bottom: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  text-align: center;
+  color: #e0e0e0;
+  padding: 10px;
+}
+
+td {
+  text-align: left;
+  color: #e0e0e0;
+  padding: 10px;
+}
+
+td.checkmark {
+  text-align: center;
+}
+
+td.checkmark::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #4acfa2;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+td.checkmark-off::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #1c1c1c
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+button.see-more {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 2px #4acfa2;
+  border-style: solid;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transition: 0.2s;
+}
+
+button.see-more:hover {
+  background-color: #46c49d;
+  transition: 0.2s;
+}
+
+footer {
+  text-align: center;
+  background-color: #292929;
+  padding: 5px 0 15px;
+  font-size: 15px;
+}
+
+footer p {
+  color: #b0b0b0;
+}
+
+.footer-content {
+  padding-left: 20px; /* Add left padding */
+}
+
+.footer-text {
+  color: #b0b0b0;
+  margin-bottom: 0;
+  line-height: 0.8;
+}
+
+section.parallax {
+  height: 500px;
+  background-image: url("https://i.imgur.com/66m7FaB.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.parallax {
+  height: 500px;
+  background-image: url("https://i.imgur.com/66m7FaB.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-content {
+  padding: 20px;
+}
+
+.parallax-text {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.parallax-text h1,
+.parallax-text h2,
+.parallax-text p {
+  color: #e0e0e0;
+  margin: 0;
+}
+
+.embed-container {
+  display: none;
+}
+.active-embed {
+  display: block;
+}
+
+.spotify-icon img {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.youtube-icon img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.youtube-album-icon img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.icon-cell {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.song-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.song-title {
+  margin-right: 10px;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* Add this line */
+  align-items: flex-start; /* Add this line */
+}
+
+.icon-container {
+  display: flex;
+  flex-wrap: wrap; /* Add this line */
+  justify-content: flex-start; /* Add this line */
+  align-items: flex-start; /* Add this line */
+  margin-top: 8px; /* Adjust the margin as needed */
+}
+
+.embedBox {
+
+}
+
+.icon-container a {
+  display: inline-block;
+  margin: 0px; /* Adjust the margin as needed */
+  margin-right: 8px;
+}
+
+.icon-container a img {
+  width: 24px; /* Adjust the icon size as needed */
+  height: 24px;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  #spotifyEmbed iframe {
+    width: 100%;
+  }
+  .parallax-text {
+    padding-right: 20px;
+    padding-left: 10px;
+  }
+}
+
+/* Media Queries */
+
+/* Desktop */
+@media (min-width: 769px) {
+  #spotifyEmbed iframe {
+    width: 80%;
+  }
+  .parallax-text {
+    padding-right: 0px;
+    padding-left: 20px;
+  }
+}
