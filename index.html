@@ -213,7 +213,11 @@
 
 
     function parseCSV(csvData) {
+      console.log('CSV data:', csvData);
+
       const parsedData = Papa.parse(csvData, { header: true }).data;
+      console.log('Parsed data:', parsedData);
+
       return parsedData;
     }
 
