@@ -211,12 +211,41 @@
     });
 
 
+    function parseCSV(csvData) {
+      // Split the CSV data into lines
+      const lines = csvData.split('\n');
+
+      // Extract the column headers from the first line
+      const headers = lines[0].split(',');
+
+      // Remove the first line (column headers) from the lines array
+      lines.shift();
+
+      // Process each line and create an object for each row
+      const data = lines.map(line => {
+        const values = line.split(',');
+        const row = {};
+
+        headers.forEach((header, index) => {
+          row[header] = values[index];
+        });
+
+        return row;
+      });
+
+      return data;
+    }
+
+
     function fetchTrackData() {
       const serverlessFunctionURL = '/.netlify/functions/googleSheets';
 
       fetch(serverlessFunctionURL)
         .then(response => response.json())
-        .then(data => {
+        .then(csvData => {
+          // Parse CSV data
+          const data = parseCSV(csvData);
+
           if (typeof data !== 'object') {
             console.error('Invalid data format. Expected an object.');
             return;
