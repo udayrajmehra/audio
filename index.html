@@ -212,13 +212,15 @@
 
     // Function to fetch and process track data from Google Sheet
     function fetchTrackData() {
-      const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_Oq8Do15RWSHJ5kUhmRET7E5Lw7wCxOByJtmXQ-ACs4DEPZVATqi-rCwX7COgibDaI06qUnbutDP1/pubhtml?gid=0&single=true';
+      const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_Oq8Do15RWSHJ5kUhmRET7E5Lw7wCxOByJtmXQ-ACs4DEPZVATqi-rCwX7COgibDaI06qUnbutDP1/pub?gid=0&single=true&output=csv';
 
       // Fetch the data from the Google Sheet URL
       fetch(googleSheetURL)
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-          const entries = data.feed.entry;
+          // Process the data and dynamically add tracks to your website
+          const rows = data.split('\n');
+          rows.shift(); // Remove the header row
 
           // Create an object to store track orders for each section
           const trackOrders = {
@@ -226,17 +228,19 @@
             'Live Sessions': []
           };
 
-          // Loop through each entry and extract the track information
-          entries.forEach(entry => {
-            const trackName = entry.gsx$trackname.$t;
-            const metadata = entry.gsx$metadata.$t;
-            const spotifyURI = entry.gsx$spotifyuri.$t;
-            const youtubeTrackID = entry.gsx$youtubetrackid.$t;
-            const sectionPlacement = entry.gsx$sectionplacement.$t;
-            const order = parseInt(entry.gsx$order.$t);
-            const recorded = entry.gsx$recorded.$t === 'True';
-            const mixed = entry.gsx$mixed.$t === 'True';
-            const mastered = entry.gsx$mastered.$t === 'True';
+          // Loop through each row and extract the track information
+          rows.forEach(row => {
+            const [
+              trackName,
+              metadata,
+              spotifyURI,
+              youtubeTrackID,
+              sectionPlacement,
+              order,
+              recorded,
+              mixed,
+              mastered
+            ] = row.split(',');
 
             // Skip the track if both Spotify URI and YouTube Track ID are 'null'
             if (spotifyURI === 'null' && youtubeTrackID === 'null') {
@@ -245,7 +249,7 @@
 
             // Add the track order to the corresponding section
             trackOrders[sectionPlacement].push({
-              order,
+              order: parseInt(order),
               trackName,
               metadata,
               spotifyURI,
@@ -300,9 +304,9 @@
                     </div>
                   </div>
                 </td>
-                <td class="${recorded ? 'checkmark checkmark-recorded' : 'checkmark-off checkmark-recorded'}"></td>
-                <td class="${mixed ? 'checkmark checkmark-mixed' : 'checkmark-off checkmark-mixed'}"></td>
-                <td class="${mastered ? 'checkmark checkmark-mastered' : 'checkmark-off checkmark-mastered'}"></td>
+                <td class="${recorded === 'True' ? 'checkmark checkmark-recorded' : 'checkmark-off checkmark-recorded'}"></td>
+                <td class="${mixed === 'True' ? 'checkmark checkmark-mixed' : 'checkmark-off checkmark-mixed'}"></td>
+                <td class="${mastered === 'True' ? 'checkmark checkmark-mastered' : 'checkmark-off checkmark-mastered'}"></td>
               `;
 
               // Append the track entry to the section table body
@@ -314,6 +318,7 @@
           console.error('Error fetching track data:', error);
         });
     }
+
 
     // Call the fetchTrackData function to fetch and process track data
     fetchTrackData();
