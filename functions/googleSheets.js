@@ -1,27 +1,30 @@
 const fetch = require('node-fetch');
+const Papa = require('papaparse');
 
 exports.handler = async (event, context) => {
   try {
     const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_Oq8Do15RWSHJ5kUhmRET7E5Lw7wCxOByJtmXQ-ACs4DEPZVATqi-rCwX7COgibDaI06qUnbutDP1/pub?gid=0&single=true&output=csv';
     const response = await fetch(googleSheetURL);
-    const data = await response.json();
-    const entries = data.feed.entry;
+    const csvData = await response.text();
+
+    // Parse CSV data
+    const data = parseCSV(csvData);
 
     const trackOrders = {
       'Studio Discography': [],
       'Live Sessions': []
     };
 
-    entries.forEach(entry => {
-      const trackName = entry.gsx$trackname.$t;
-      const metadata = entry.gsx$metadata.$t;
-      const spotifyURI = entry.gsx$spotifyuri.$t;
-      const youtubeTrackID = entry.gsx$youtubetrackid.$t;
-      const sectionPlacement = entry.gsx$sectionplacement.$t;
-      const order = parseInt(entry.gsx$order.$t);
-      const recorded = entry.gsx$recorded.$t === 'True';
-      const mixed = entry.gsx$mixed.$t === 'True';
-      const mastered = entry.gsx$mastered.$t === 'True';
+    data.forEach(entry => {
+      const trackName = entry.trackname;
+      const metadata = entry.metadata;
+      const spotifyURI = entry.spotifyuri;
+      const youtubeTrackID = entry.youtubetrackid;
+      const sectionPlacement = entry.sectionplacement;
+      const order = parseInt(entry.order);
+      const recorded = entry.recorded === 'True';
+      const mixed = entry.mixed === 'True';
+      const mastered = entry.mastered === 'True';
 
       if (spotifyURI === 'null' && youtubeTrackID === 'null') {
         return;
@@ -55,3 +58,8 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
+function parseCSV(csvData) {
+  const parsedData = Papa.parse(csvData, { header: true }).data;
+  return parsedData;
+}
