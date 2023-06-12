@@ -2,13 +2,11 @@ const fetch = require('node-fetch');
 const Papa = require('papaparse');
 
 function parseCSV(csvData) {
-    console.log('CSV data:', csvData);
-
     const parsedData = Papa.parse(csvData, { header: true }).data;
     console.log('Parsed data:', parsedData);
-
     return parsedData;
   }
+  
 
 exports.handler = async (event, context) => {
   try {
