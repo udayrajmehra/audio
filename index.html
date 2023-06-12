@@ -217,7 +217,6 @@
       fetch(serverlessFunctionURL)
         .then(response => response.json())
         .then(data => {
-
           if (typeof data !== 'object') {
             console.error('Invalid data format. Expected an object.');
             return;
@@ -229,31 +228,32 @@
               return;
             }
 
-          // Process the received track data and dynamically add tracks to your website
-          Object.entries(data).forEach(([sectionName, tracks]) => {
-            // Create a section element for each section
-            const sectionElement = document.createElement('section');
-            sectionElement.className = 'track-section';
-            sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
+            // Process the received track data and dynamically add tracks to your website
+            Object.entries(data).forEach(([sectionName, tracks]) => {
+              // Create a section element for each section
+              const sectionElement = document.createElement('section');
+              sectionElement.className = 'track-section';
+              sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
 
-            // Create a heading for the section
-            const headingElement = document.createElement('h2');
-            headingElement.textContent = sectionName;
-            sectionElement.appendChild(headingElement);
+              // Create a heading for the section
+              const headingElement = document.createElement('h2');
+              headingElement.textContent = sectionName;
+              sectionElement.appendChild(headingElement);
 
-            // Add each track to the section
-            tracks.forEach(track => {
-              const trackElement = document.createElement('div');
-              trackElement.className = 'track';
-              trackElement.textContent = track.trackName;
+              // Add each track to the section
+              tracks.forEach(track => {
+                const trackElement = document.createElement('div');
+                trackElement.className = 'track';
+                trackElement.textContent = track.trackName;
 
-              // Add trackElement to the appropriate section on your website
-              // ...
-              sectionElement.appendChild(trackElement);
+                // Add trackElement to the appropriate section on your website
+                // ...
+                sectionElement.appendChild(trackElement);
+              });
+
+              // Add the section to the page
+              document.getElementById('track-list').appendChild(sectionElement);
             });
-
-            // Add the section to the page
-            document.getElementById('track-list').appendChild(sectionElement);
           });
         })
         .catch(error => {
@@ -263,6 +263,7 @@
 
     // Call the fetchTrackData function to fetch and process track data
     fetchTrackData();
+
 
   </script>
 </body>
