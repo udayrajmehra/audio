@@ -275,8 +275,7 @@
     fetchTrackData(); -->
     <script>
       function fetchTrackData() {
-        console.log('Test log message');
-        return fetch('/functions/googleSheets.js')
+        return fetch('.netlify/functions/googleSheets')
           .then((response) => response.json())
           .then((data) => {
             const csvData = data.csvData;
@@ -309,7 +308,7 @@
                 mastered
               });
             });
-
+            console.log('Test log message');
             console.log('Track Orders:', trackOrders);
 
             return trackOrders;
