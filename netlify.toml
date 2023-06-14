@@ -6,10 +6,7 @@
   to = "/.netlify/functions/:splat"
   status = 200
   headers = { 
-    # Allow requests from any origin
     "Access-Control-Allow-Origin" = "*",
-    # Allow specific HTTP methods
     "Access-Control-Allow-Methods" = "GET, POST, PUT, DELETE, OPTIONS",
-    # Allow specific headers
     "Access-Control-Allow-Headers" = "Content-Type, Authorization"
   }
