@@ -8,8 +8,6 @@ function parseCSV(csvData) {
   return parsedData;
 }
 
-console.log('Parsed data:', parsedData);
-
 const app = express();
 
 app.use(cors());
@@ -73,5 +71,4 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Export the app as the handler function
-exports.handler = app;
+module.exports = app;
