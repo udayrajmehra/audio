@@ -9,6 +9,8 @@ function parseCSV(csvData) {
   return parsedData;
 }
 
+parseCSV();
+
 const app = express();
 
 app.use(cors());
