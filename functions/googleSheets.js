@@ -72,4 +72,5 @@ app.get('/', async (req, res) => {
   }
 });
 
-module.exports = app;
+// Export the app as the handler function
+exports.handler = app;
