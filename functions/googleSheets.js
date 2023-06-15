@@ -5,9 +5,10 @@ const cors = require('cors');
 
 function parseCSV(csvData) {
   const parsedData = Papa.parse(csvData, { header: true }).data;
-  console.log('Parsed data:', parsedData);
   return parsedData;
 }
+
+console.log('Parsed data:', parsedData);
 
 const app = express();
 
