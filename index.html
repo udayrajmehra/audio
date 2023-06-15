@@ -275,7 +275,7 @@
     fetchTrackData(); -->
     <script>
       function fetchTrackData() {
-        return fetch('https://poetic-squirrel-e4b691.netlify.app/.netlify/functions/googleSheets')
+        return fetch('/.netlify/functions/googleSheets')
           .then((response) => response.json())
           .then((data) => {
             const csvData = data.csvData;
