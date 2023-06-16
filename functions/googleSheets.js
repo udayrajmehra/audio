@@ -13,16 +13,23 @@ const app = express();
 app.use(cors());
 
 app.get('/', async (req, res) => {
+  let csvData; // Declare csvData variable
+
   try {
     const googleSheetURL =
       'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_Oq8Do15RWSHJ5kUhmRET7E5Lw7wCxOByJtmXQ-ACs4DEPZVATqi-rCwX7COgibDaI06qUnbutDP1/pub?gid=0&single=true&output=csv';
     const response = await fetch(googleSheetURL);
-    const csvData = await response.text();
 
+    csvData = await response.text();
+  } catch (error) {
+    console.error('Error fetching CSV data:', error);
+    res.status(500).json({ error: 'Failed to fetch CSV data' });
+    return; // Return early if an error occurs
+  }
+
+  try {
     // Parse CSV data
     const data = parseCSV(csvData);
-
-    console.log('Parsed Data:', data); // Debugging: Log parsed data
 
     const trackOrders = {
       'Studio Discography': [],
