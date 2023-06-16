@@ -22,6 +22,8 @@ app.get('/', async (req, res) => {
     // Parse CSV data
     const data = parseCSV(csvData);
 
+    console.log('Parsed Data:', data); // Debugging: Log parsed data
+
     const trackOrders = {
       'Studio Discography': [],
       'Live Sessions': [],
