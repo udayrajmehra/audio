@@ -28,15 +28,15 @@ app.get('/', async (req, res) => {
     };
 
     data.forEach((entry) => {
-      const trackName = entry.trackname;
+      const trackName = entry.trackName;
       const metadata = entry.metadata;
-      const spotifyURI = entry.spotifyuri;
-      const youtubeTrackID = entry.youtubetrackid;
-      const sectionPlacement = entry.sectionplacement;
+      const spotifyURI = entry.spotifyURI;
+      const youtubeTrackID = entry.youtubeTrackID;
+      const sectionPlacement = entry.sectionPlacement;
       const order = parseInt(entry.order);
-      const recorded = entry.recorded === 'True';
-      const mixed = entry.mixed === 'True';
-      const mastered = entry.mastered === 'True';
+      const recorded = entry.recorded === 'TRUE';
+      const mixed = entry.mixed === 'TRUE';
+      const mastered = entry.mastered === 'TRUE';
 
       if (spotifyURI === 'null' && youtubeTrackID === 'null') {
         return;
@@ -72,4 +72,3 @@ app.get('/', async (req, res) => {
 });
 
 exports.handler = app;
-
