@@ -26,6 +26,7 @@
 </head>
 
 <body>
+
   <header>
     <div class="header-content">
       <img style="max-width:100%; max-height:100%; align-self: flex-end;" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_White.png" alt="Spotify Logo">
@@ -49,59 +50,126 @@
     <section>
       <h2>Projects</h2>
 
-      <section id="studio-discography" class="track-section">
-        <h3>Studio Discography</h3>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Recorded</th>
-              <th>Mixed</th>
-              <th>Mastered</th>
-            </tr>
-          </thead>
+      <h3>Studio Discography</h3>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Recorded</th>
+            <th>Mixed</th>
+            <th>Mastered</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            <tr>
-              
-            </tr>
-            <tr>
-              
-            </tr>
-            <!-- Add more songs here -->
-          </tbody>
-        </table>
-        <button class="see-more">See more</button>
-      </section>
+        <tbody>
+          <tr>
+            <td>
+              <div class="song-entry">
+                <div class="checkmark"></div>
+                <div class="song-details">
+                  <div class="title-container">
+                    <span>sound only travels as far as we care to hear</span>
+                    <div class="icon-container">
+                      <!--Add data-type="album" for albums-->
+                      <a href="#" class="spotify-icon" data-song="17FYzV4yAo9GeYcBammhvT" data-type="album">
+                        <img src="resources/spotify-icon.png" alt="Spotify Icon">
+                      </a>
+                      <!--For albums, replace data-video with data-playlist AND replace class="youtube-icon" with class="youtube-album-icon"-->
+                      <a href="#" class="youtube-album-icon" data-playlist="OLAK5uy_lUikAbYhwpI-QuIiFGu-UUZBTZ7HDMN4o">
+                        <img src="resources/youtube-icon.png" alt="YouTube Icon">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+            </td>
+            <!-- To remove green circles, use class="checkmark-off"-->
+            <td class="checkmark-off checkmark-recorded"></td>
+            <td class="checkmark-off checkmark-mixed"></td>
+            <td class="checkmark checkmark-mastered"></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="song-entry">
+                <span>Should Be</span>
+                <div class="icon-container">
+                  <!--Add data-type="album" for albums-->
+                  <a href="#" class="spotify-icon" data-song="6ogNxBZ2yZutGtZshOvcmu" data-type="song">
+                    <img src="resources/spotify-icon.png" alt="Spotify Icon">
+                  </a>
+                  <!--For albums, replace data-video with data-playlist AND replace class="youtube-icon" with class="youtube-album-icon"-->
+                  <a href="#" class="youtube-icon" data-video="ZqewDDbhz_A" data-type="song">
+                    <img src="resources/youtube-icon.png" alt="YouTube Icon">
+                  </a>
+                </div>
+              </div>
+            </td>
+            <!-- To remove green circles, use class="checkmark-off"-->
+            <td class="checkmark-off checkmark-recorded"></td>
+            <td class="checkmark checkmark-mixed"></td>
+            <td class="checkmark-off checkmark-mastered"></td>
+            </td>
+          </tr>
+          <!-- Add more songs here -->
+        </tbody>
+      </table>
+      <button class="see-more">See more</button>
 
-      <section id="live-sessions" class="track-section">
-        <h3>Live Sessions</h3>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Recorded</th>
-              <th>Mixed</th>
-              <th>Mastered</th>
-            </tr>
-          </thead>
+      <h3>Live Sessions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Recorded</th>
+            <th>Mixed</th>
+            <th>Mastered</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            <tr>
-              
-            </tr>
-            <tr>
-              
-            </tr>
-            <!-- Add more songs here -->
-          </tbody>
-        </table>
-        <button class="see-more">See more</button>
-      </section>
+        <tbody>
+          <tr>
+            <td>
+              <div class="song-entry">
+                <span>Mariposa (Wavy)</span>
+                <div class="icon-container">
+                  <a href="#" class="youtube-icon" data-video="9obZZRcxizw" data-type="song">
+                    <img src="resources/youtube-icon.png" alt="YouTube Icon">
+                  </a>
+                </div>
+              </div>
+            </td>
+            <!-- To remove green circles, use class="checkmark-off"-->
+            <td class="checkmark checkmark-recorded"></td>
+            <td class="checkmark checkmark-mixed"></td>
+            <td class="checkmark checkmark-mastered"></td>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="song-entry">
+                <span>Killah Cortez Live at KSDT Radio</span>
+                <div class="icon-container">
+                  <!--Add data-type="album" for albums-->
+                  <a href="#" class="spotify-icon" data-song="26AfQg6811mOfMT5Y6cbHv" data-type="album">
+                    <img src="resources/spotify-icon.png" alt="Spotify Icon">
+                  </a>
+                  <!--For albums, replace data-video with data-playlist AND replace class="youtube-icon" with class="youtube-album-icon"-->
+                  <a href="#" class="youtube-icon" data-video="5zxhcXLbmHo" data-type="song">
+                    <img src="resources/youtube-icon.png" alt="YouTube Icon">
+                  </a>
+                </div>
+              </div>
+            </td>
+            <!-- To remove green circles, use class="checkmark-off" -->
+            <td class="checkmark checkmark-recorded"></td>
+            <td class="checkmark checkmark-mixed"></td>
+            <td class="checkmark-off checkmark-mastered"></td>
+            </td>
+          </tr>
+          <!-- Add more songs here -->
+        </tbody>
+      </table>
+      <button class="see-more">See more</button>
     </section>
-
-    <section id="track-list"></section> <!-- Add an empty section to append track sections -->
-
   </main>
 
   <footer>
@@ -119,30 +187,30 @@
 
     // Function to handle Spotify icon click event
     function handleSpotifyIconClick(event) {
-      event.preventDefault();
-      const songId = this.getAttribute('data-song');
-      const embedType = this.getAttribute('data-type');
-    
-      // Remove existing embeds
-      const existingEmbeds = document.querySelectorAll('.embedBox');
-      existingEmbeds.forEach(embed => {
-        embed.remove();
-      });
+    event.preventDefault();
+    const songId = this.getAttribute('data-song');
+    const embedType = this.getAttribute('data-type');
+  
+    // Remove existing embeds
+    const existingEmbeds = document.querySelectorAll('.embedBox');
+    existingEmbeds.forEach(embed => {
+      embed.remove();
+    });
 
-      if (embedType === 'album') {
-        const embedCode = `<iframe src="https://open.spotify.com/embed/album/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-        const songEntry = this.closest('.song-entry');
-        const embedContainer = document.createElement('div');
-        embedContainer.classList.add('embedBox');
-        embedContainer.innerHTML = embedCode;
-        songEntry.appendChild(embedContainer);
-      } else if (embedType === 'song') {
-        const embedCode = `<iframe src="https://open.spotify.com/embed/track/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-        const songEntry = this.closest('.song-entry');
-        const embedContainer = document.createElement('div');
-        embedContainer.classList.add('embedBox');
-        embedContainer.innerHTML = embedCode;
-        songEntry.appendChild(embedContainer);
+    if (embedType === 'album') {
+      const embedCode = `<iframe src="https://open.spotify.com/embed/album/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+      const songEntry = this.closest('.song-entry');
+      const embedContainer = document.createElement('div');
+      embedContainer.classList.add('embedBox');
+      embedContainer.innerHTML = embedCode;
+      songEntry.appendChild(embedContainer);
+    } else if (embedType === 'song') {
+      const embedCode = `<iframe src="https://open.spotify.com/embed/track/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+      const songEntry = this.closest('.song-entry');
+      const embedContainer = document.createElement('div');
+      embedContainer.classList.add('embedBox');
+      embedContainer.innerHTML = embedCode;
+      songEntry.appendChild(embedContainer);
       }
     }
 
@@ -173,6 +241,7 @@
       newEmbedContainer.innerHTML = embedCode;
       songEntry.appendChild(newEmbedContainer);
     }
+
 
     function handleYoutubeAlbumClick(event) {
       event.preventDefault();
@@ -216,156 +285,9 @@
       icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 
-    // Read CSV file and generate tracks based on it
-    function fetchTrackData() {
-      // Specify the path to your local CSV file
-      const csvFilePath = 'resources/track-data.csv';
-
-      fetch(csvFilePath)
-        .then(response => response.text())
-        .then(csvData => {
-          // Parse the CSV data using Papa Parse
-          const parsedData = Papa.parse(csvData, { header: true }).data;
-
-          if (!Array.isArray(parsedData)) {
-            console.error('Invalid data format. Expected an array.');
-            return;
-          }
-
-          const trackOrders = {
-            'Studio Discography': [],
-            'Live Sessions': [],
-          };
-
-          parsedData.forEach(entry => {
-            const sectionPlacement = entry.sectionPlacement;
-            if (!trackOrders[sectionPlacement]) {
-              console.error(`Invalid section placement "${sectionPlacement}".`);
-              return;
-            }
-
-            const {
-              trackName,
-              metadata,
-              spotifyURI,
-              youtubeTrackID,
-              order,
-              recorded,
-              mixed,
-              mastered,
-            } = entry;
-
-            if (spotifyURI === 'null' && youtubeTrackID === 'null') {
-              return;
-            }
-
-            trackOrders[sectionPlacement].push({
-              order: parseInt(order),
-              trackName,
-              metadata,
-              spotifyURI,
-              youtubeTrackID,
-              recorded: recorded === 'TRUE',
-              mixed: mixed === 'TRUE',
-              mastered: mastered === 'TRUE',
-            });
-          });
-
-          Object.values(trackOrders).forEach(section => {
-            section.sort((a, b) => a.order - b.order);
-          });
-
-          Object.entries(trackOrders).forEach(([sectionName, tracks]) => {
-            // Create a section element for each section
-            const sectionElement = document.createElement('section');
-            sectionElement.className = 'track-section';
-            sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
-
-            // Create a heading for the section
-            const headingElement = document.createElement('h3');
-            headingElement.textContent = sectionName;
-            sectionElement.appendChild(headingElement);
-
-            // Create a table for the tracks
-            const tableElement = document.createElement('table');
-
-            // Create the table header
-            const tableHeader = document.createElement('thead');
-            const tableHeaderRow = document.createElement('tr');
-            const tableHeaderColumns = ['', 'Recorded', 'Mixed', 'Mastered'];
-
-            tableHeaderColumns.forEach(columnText => {
-              const tableHeaderColumn = document.createElement('th');
-              tableHeaderColumn.textContent = columnText;
-              tableHeaderRow.appendChild(tableHeaderColumn);
-            });
-
-            tableHeader.appendChild(tableHeaderRow);
-            tableElement.appendChild(tableHeader);
-
-            // Create the table body
-            const tableBody = document.createElement('tbody');
-
-            tracks.forEach(track => {
-              const tableRow = document.createElement('tr');
-
-              // Track name cell
-              const trackNameCell = document.createElement('td');
-              trackNameCell.textContent = track.trackName;
-              tableRow.appendChild(trackNameCell);
-
-              // Metadata cell
-              const metadataCell = document.createElement('td');
-              metadataCell.textContent = track.metadata;
-              tableRow.appendChild(metadataCell);
-
-              // Spotify cell
-              const spotifyCell = document.createElement('td');
-              if (track.spotifyURI !== 'null') {
-                const spotifyIcon = document.createElement('a');
-                spotifyIcon.href = '#';
-                spotifyIcon.className = 'spotify-icon';
-                spotifyIcon.setAttribute('data-song', track.spotifyURI);
-                spotifyIcon.setAttribute('data-type', 'song');
-                spotifyIcon.innerHTML = '<img src="spotify-icon.png" alt="Spotify">';
-                spotifyCell.appendChild(spotifyIcon);
-              }
-              tableRow.appendChild(spotifyCell);
-
-              // YouTube cell
-              const youtubeCell = document.createElement('td');
-              if (track.youtubeTrackID !== 'null') {
-                const youtubeIcon = document.createElement('a');
-                youtubeIcon.href = '#';
-                youtubeIcon.className = 'youtube-icon';
-                youtubeIcon.setAttribute('data-video', track.youtubeTrackID);
-                youtubeIcon.innerHTML = '<img src="youtube-icon.png" alt="YouTube">';
-                youtubeCell.appendChild(youtubeIcon);
-              }
-              tableRow.appendChild(youtubeCell);
-
-              // Append the table row to the table body
-              tableBody.appendChild(tableRow);
-            });
-
-            tableElement.appendChild(tableBody);
-
-            // Append the table to the section
-            sectionElement.appendChild(tableElement);
-
-            // Append the section to the main track list section
-            const trackListSection = document.getElementById('track-list');
-            trackListSection.appendChild(sectionElement);
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching track data:', error);
-        });
-    }
-
-    // Fetch track data when the page loads
-    window.addEventListener('load', fetchTrackData);
   </script>
+  
+
 </body>
 
 </html>
