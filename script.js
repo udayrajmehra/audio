@@ -87,20 +87,28 @@ function handleYoutubeAlbumClick(event) {
   songEntry.appendChild(newEmbedContainer);
 }
 
-// Attach click event listeners to the Spotify icons
-spotifyIcons.forEach(icon => {
-  icon.addEventListener('click', handleSpotifyIconClick);
-});
-
-// Attach click event listeners to the YouTube icons
-youtubeIcons.forEach(icon => {
-    icon.addEventListener('click', handleYoutubeIconClick);
-});
-
-// Attach click event listeners to the YouTube album icons
-youtubeAlbumIcons.forEach(icon => {
-    icon.addEventListener('click', handleYoutubeAlbumClick);
-});
+// Attach click event listeners using event delegation to the parent element that exists on the page
+document.addEventListener('click', function(event) {
+    const target = event.target;
+  
+    // Check if the clicked element has the class 'spotify-icon'
+    if (target.classList.contains('spotify-icon')) {
+      event.preventDefault();
+      handleSpotifyIconClick.call(target, event);
+    }
+  
+    // Check if the clicked element has the class 'youtube-icon'
+    if (target.classList.contains('youtube-icon')) {
+      event.preventDefault();
+      handleYoutubeIconClick.call(target, event);
+    }
+  
+    // Check if the clicked element has the class 'youtube-album-icon'
+    if (target.classList.contains('youtube-album-icon')) {
+      event.preventDefault();
+      handleYoutubeAlbumClick.call(target, event);
+    }
+  });
 
 // CSV file shenanigans
 const csvFilePath = 'resources/track-data.csv';
