@@ -133,7 +133,7 @@ td.checkmark::before {
   height: 11px;
   border: 2px solid #4acfa2;
   border-radius: 50%;
-  vertical-align: middle;
+  vertical-align: top;
   margin-right: 5px;
 }
 
@@ -144,7 +144,7 @@ td.checkmark-off::before {
   height: 11px;
   border: 2px solid #1c1c1c
   border-radius: 50%;
-  vertical-align: middle;
+  vertical-align: top;
   margin-right: 5px;
 }
 
@@ -291,7 +291,6 @@ section.parallax {
 }
 
 .embedBox {
-
 }
 
 .icon-container a {
