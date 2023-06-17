@@ -113,7 +113,6 @@ const csvFilePath = 'resources/track-data.csv';
 function handleCsvParseComplete(results) {
     const tracks = results.data;
     tracks.forEach(addTrackToWebsite);
-    console.log('bitch');
 }
 
 function addTrackToWebsite(track) {
@@ -128,8 +127,6 @@ function addTrackToWebsite(track) {
     const trackEntryCell = newRow.insertCell(0);
     trackEntryCell.innerHTML = `
         <div class="song-entry">
-        <div class="checkmark"></div>
-        <div class="song-details">
             <div class="title-container">
             <span>${trackName}</span>
             <div class="icon-container">
@@ -150,7 +147,6 @@ function addTrackToWebsite(track) {
                     <img src="resources/youtube-icon.png" alt="YouTube Icon">
                 </a>
                 ` : ''}
-            </div>
             </div>
         </div>
         </div>
