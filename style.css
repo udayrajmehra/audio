@@ -122,8 +122,12 @@ td {
   padding: 10px;
 }
 
+tr {
+  border-bottom: 2px solid #424242;
+}
+
 .checkmark, .checkmark-off, .checkmark-recorded, .checkmark-mixed, .checkmark-mastered {
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 td.checkmark {
