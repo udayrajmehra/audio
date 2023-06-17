@@ -158,9 +158,9 @@ function addTrackToWebsite(track) {
     const checkmarkRecordedCell = newRow.insertCell(1);
     const checkmarkMixedCell = newRow.insertCell(2);
     const checkmarkMasteredCell = newRow.insertCell(3);
-    checkmarkRecordedCell.className = `checkmark ${recorded === "True" ? "checkmark-recorded" : "checkmark-off"}`;
-    checkmarkMixedCell.className = `checkmark ${mixed === "True" ? "checkmark-mixed" : "checkmark-off"}`;
-    checkmarkMasteredCell.className = `checkmark ${mastered === "True" ? "checkmark-mastered" : "checkmark-off"}`;
+    checkmarkRecordedCell.className = `${recorded === "True" ? "checkmark" : "checkmark-off"} checkmark-recorded`;
+    checkmarkMixedCell.className = `${recorded === "True" ? "checkmark" : "checkmark-off"} checkmark-mixed`;
+    checkmarkMasteredCell.className = `${recorded === "True" ? "checkmark" : "checkmark-off"} checkmark-mastered`;
 
     // Attach click event listeners to the Spotify icons in the newly added row
     const spotifyIcons = newRow.querySelectorAll('.spotify-icon');
