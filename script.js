@@ -144,11 +144,6 @@ function addTrackToWebsite(track) {
                     <img src="resources/spotify-icon.png" alt="Spotify Icon">
                 </a>
                 ` : '')}
-                ${metadata === 'song' && youtubeTrackID !== 'null' ? `
-                <a href="#" class="youtube-icon" data-video="${youtubeTrackID}" data-type="${metadata}">
-                    <img src="resources/youtube-icon.png" alt="YouTube Icon">
-                </a>
-                ` : ''}
                 ${metadata === 'album' && youtubeTrackID !== 'null' ? `
                 <a href="#" class="youtube-album-icon" data-playlist="${youtubeTrackID}" data-type="${metadata}">
                     <img src="resources/youtube-icon.png" alt="YouTube Icon">
