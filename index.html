@@ -99,6 +99,9 @@
         <button class="see-more">See more</button>
       </section>
     </section>
+
+    <section id="track-list"></section> <!-- Add an empty section to append track sections -->
+
   </main>
 
   <footer>
@@ -116,30 +119,30 @@
 
     // Function to handle Spotify icon click event
     function handleSpotifyIconClick(event) {
-    event.preventDefault();
-    const songId = this.getAttribute('data-song');
-    const embedType = this.getAttribute('data-type');
-  
-    // Remove existing embeds
-    const existingEmbeds = document.querySelectorAll('.embedBox');
-    existingEmbeds.forEach(embed => {
-      embed.remove();
-    });
+      event.preventDefault();
+      const songId = this.getAttribute('data-song');
+      const embedType = this.getAttribute('data-type');
+    
+      // Remove existing embeds
+      const existingEmbeds = document.querySelectorAll('.embedBox');
+      existingEmbeds.forEach(embed => {
+        embed.remove();
+      });
 
-    if (embedType === 'album') {
-      const embedCode = `<iframe src="https://open.spotify.com/embed/album/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-      const songEntry = this.closest('.song-entry');
-      const embedContainer = document.createElement('div');
-      embedContainer.classList.add('embedBox');
-      embedContainer.innerHTML = embedCode;
-      songEntry.appendChild(embedContainer);
-    } else if (embedType === 'song') {
-      const embedCode = `<iframe src="https://open.spotify.com/embed/track/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-      const songEntry = this.closest('.song-entry');
-      const embedContainer = document.createElement('div');
-      embedContainer.classList.add('embedBox');
-      embedContainer.innerHTML = embedCode;
-      songEntry.appendChild(embedContainer);
+      if (embedType === 'album') {
+        const embedCode = `<iframe src="https://open.spotify.com/embed/album/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+        const songEntry = this.closest('.song-entry');
+        const embedContainer = document.createElement('div');
+        embedContainer.classList.add('embedBox');
+        embedContainer.innerHTML = embedCode;
+        songEntry.appendChild(embedContainer);
+      } else if (embedType === 'song') {
+        const embedCode = `<iframe src="https://open.spotify.com/embed/track/${songId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+        const songEntry = this.closest('.song-entry');
+        const embedContainer = document.createElement('div');
+        embedContainer.classList.add('embedBox');
+        embedContainer.innerHTML = embedCode;
+        songEntry.appendChild(embedContainer);
       }
     }
 
@@ -279,24 +282,80 @@
             sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
 
             // Create a heading for the section
-            const headingElement = document.createElement('h2');
+            const headingElement = document.createElement('h3');
             headingElement.textContent = sectionName;
             sectionElement.appendChild(headingElement);
 
-            // Add each track to the section
-            tracks.forEach(track => {
-              const trackElement = document.createElement('div');
-              trackElement.className = 'track';
-              trackElement.textContent = track.trackName;
+            // Create a table for the tracks
+            const tableElement = document.createElement('table');
 
-              // Add trackElement to the appropriate section on your website
-              document.getElementById('studio-discography').appendChild(trackElement);
-              document.getElementById('live-sessions').appendChild(trackElement);
-              sectionElement.appendChild(trackElement);
+            // Create the table header
+            const tableHeader = document.createElement('thead');
+            const tableHeaderRow = document.createElement('tr');
+            const tableHeaderColumns = ['', 'Recorded', 'Mixed', 'Mastered'];
+
+            tableHeaderColumns.forEach(columnText => {
+              const tableHeaderColumn = document.createElement('th');
+              tableHeaderColumn.textContent = columnText;
+              tableHeaderRow.appendChild(tableHeaderColumn);
             });
 
-            // Add the section to the page
-            document.getElementById('track-list').appendChild(sectionElement);
+            tableHeader.appendChild(tableHeaderRow);
+            tableElement.appendChild(tableHeader);
+
+            // Create the table body
+            const tableBody = document.createElement('tbody');
+
+            tracks.forEach(track => {
+              const tableRow = document.createElement('tr');
+
+              // Track name cell
+              const trackNameCell = document.createElement('td');
+              trackNameCell.textContent = track.trackName;
+              tableRow.appendChild(trackNameCell);
+
+              // Metadata cell
+              const metadataCell = document.createElement('td');
+              metadataCell.textContent = track.metadata;
+              tableRow.appendChild(metadataCell);
+
+              // Spotify cell
+              const spotifyCell = document.createElement('td');
+              if (track.spotifyURI !== 'null') {
+                const spotifyIcon = document.createElement('a');
+                spotifyIcon.href = '#';
+                spotifyIcon.className = 'spotify-icon';
+                spotifyIcon.setAttribute('data-song', track.spotifyURI);
+                spotifyIcon.setAttribute('data-type', 'song');
+                spotifyIcon.innerHTML = '<img src="spotify-icon.png" alt="Spotify">';
+                spotifyCell.appendChild(spotifyIcon);
+              }
+              tableRow.appendChild(spotifyCell);
+
+              // YouTube cell
+              const youtubeCell = document.createElement('td');
+              if (track.youtubeTrackID !== 'null') {
+                const youtubeIcon = document.createElement('a');
+                youtubeIcon.href = '#';
+                youtubeIcon.className = 'youtube-icon';
+                youtubeIcon.setAttribute('data-video', track.youtubeTrackID);
+                youtubeIcon.innerHTML = '<img src="youtube-icon.png" alt="YouTube">';
+                youtubeCell.appendChild(youtubeIcon);
+              }
+              tableRow.appendChild(youtubeCell);
+
+              // Append the table row to the table body
+              tableBody.appendChild(tableRow);
+            });
+
+            tableElement.appendChild(tableBody);
+
+            // Append the table to the section
+            sectionElement.appendChild(tableElement);
+
+            // Append the section to the main track list section
+            const trackListSection = document.getElementById('track-list');
+            trackListSection.appendChild(sectionElement);
           });
         })
         .catch(error => {
@@ -304,9 +363,8 @@
         });
     }
 
-    // Call the fetchTrackData function to fetch and process track data
-    fetchTrackData();
-
+    // Fetch track data when the page loads
+    window.addEventListener('load', fetchTrackData);
   </script>
 </body>
 
