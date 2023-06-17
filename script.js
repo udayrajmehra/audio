@@ -126,24 +126,6 @@ function addTrackToWebsite(track) {
 
     const newRow = tbody.insertRow(order - 1);
 
-    // Attach click event listeners to the Spotify icons in the newly added row
-    const spotifyIcons = newRow.querySelectorAll('.spotify-icon');
-    spotifyIcons.forEach(icon => {
-        icon.addEventListener('click', handleSpotifyIconClick);
-    });
-
-    // Attach click event listeners to the YouTube icons in the newly added row
-    const youtubeIcons = newRow.querySelectorAll('.youtube-icon');
-    youtubeIcons.forEach(icon => {
-        icon.addEventListener('click', handleYoutubeIconClick);
-    });
-
-    // Attach click event listeners to the YouTube album icons in the newly added row
-    const youtubeAlbumIcons = newRow.querySelectorAll('.youtube-album-icon');
-    youtubeAlbumIcons.forEach(icon => {
-        icon.addEventListener('click', handleYoutubeAlbumClick);
-    });
-
     // Create and append the track entry cell
     const trackEntryCell = newRow.insertCell(0);
     trackEntryCell.innerHTML = `
@@ -179,6 +161,24 @@ function addTrackToWebsite(track) {
     checkmarkRecordedCell.className = `checkmark ${recorded === "True" ? "checkmark-recorded" : "checkmark-off"}`;
     checkmarkMixedCell.className = `checkmark ${mixed === "True" ? "checkmark-mixed" : "checkmark-off"}`;
     checkmarkMasteredCell.className = `checkmark ${mastered === "True" ? "checkmark-mastered" : "checkmark-off"}`;
+
+    // Attach click event listeners to the Spotify icons in the newly added row
+    const spotifyIcons = newRow.querySelectorAll('.spotify-icon');
+    spotifyIcons.forEach(icon => {
+        icon.addEventListener('click', handleSpotifyIconClick);
+    });
+
+    // Attach click event listeners to the YouTube icons in the newly added row
+    const youtubeIcons = newRow.querySelectorAll('.youtube-icon');
+    youtubeIcons.forEach(icon => {
+        icon.addEventListener('click', handleYoutubeIconClick);
+    });
+
+    // Attach click event listeners to the YouTube album icons in the newly added row
+    const youtubeAlbumIcons = newRow.querySelectorAll('.youtube-album-icon');
+    youtubeAlbumIcons.forEach(icon => {
+        icon.addEventListener('click', handleYoutubeAlbumClick);
+    });
 }
 
 
