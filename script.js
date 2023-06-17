@@ -113,6 +113,7 @@ const csvFilePath = 'resources/track-data.csv';
 function handleCsvParseComplete(results) {
     const tracks = results.data;
     tracks.forEach(addTrackToWebsite);
+    console.log('bitch');
 }
 
 function addTrackToWebsite(track) {
