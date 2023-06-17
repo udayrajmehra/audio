@@ -159,22 +159,6 @@ function addTrackToWebsite(track) {
     checkmarkRecordedCell.className = `checkmark ${recorded === "True" ? "checkmark-recorded" : "checkmark-off"}`;
     checkmarkMixedCell.className = `checkmark ${mixed === "True" ? "checkmark-mixed" : "checkmark-off"}`;
     checkmarkMasteredCell.className = `checkmark ${mastered === "True" ? "checkmark-mastered" : "checkmark-off"}`;
-
-    // Add event listeners to the Spotify and YouTube icons
-    const spotifyIcons = newRow.getElementsByClassName('spotify-icon');
-    for (let i = 0; i < spotifyIcons.length; i++) {
-      spotifyIcons[i].addEventListener('click', handleSpotifyIconClick);
-    }
-
-    const youtubeIcons = newRow.getElementsByClassName('youtube-icon');
-    for (let i = 0; i < youtubeIcons.length; i++) {
-      youtubeIcons[i].addEventListener('click', handleYouTubeIconClick);
-    }
-
-    const youtubeAlbumIcons = newRow.getElementsByClassName('youtube-album-icon');
-    for (let i = 0; i < youtubeAlbumIcons.length; i++) {
-      youtubeAlbumIcons[i].addEventListener('click', handleYouTubeAlbumIconClick);
-    }
 }
 
 
