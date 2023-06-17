@@ -122,6 +122,10 @@ td {
   padding: 10px;
 }
 
+.checkmark, .checkmark-off, .checkmark-recorded, .checkmark-mixed, .checkmark-mastered {
+  vertical-align: top;
+}
+
 td.checkmark {
   text-align: center;
 }
@@ -133,7 +137,7 @@ td.checkmark::before {
   height: 11px;
   border: 2px solid #4acfa2;
   border-radius: 50%;
-  vertical-align: top;
+  vertical-align: middle;
   margin-right: 5px;
 }
 
@@ -144,7 +148,7 @@ td.checkmark-off::before {
   height: 11px;
   border: 2px solid #1c1c1c
   border-radius: 50%;
-  vertical-align: top;
+  vertical-align: middle;
   margin-right: 5px;
 }
 
