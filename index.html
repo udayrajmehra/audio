@@ -49,51 +49,55 @@
     <section>
       <h2>Projects</h2>
 
-      <h3>Studio Discography</h3>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Recorded</th>
-            <th>Mixed</th>
-            <th>Mastered</th>
-          </tr>
-        </thead>
+      <section id="studio-discography" class="track-section">
+        <h3>Studio Discography</h3>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Recorded</th>
+              <th>Mixed</th>
+              <th>Mastered</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            
-          </tr>
-          <tr>
-            
-          </tr>
-          <!-- Add more songs here -->
-        </tbody>
-      </table>
-      <button class="see-more">See more</button>
+          <tbody>
+            <tr>
+              
+            </tr>
+            <tr>
+              
+            </tr>
+            <!-- Add more songs here -->
+          </tbody>
+        </table>
+        <button class="see-more">See more</button>
+      </section>
 
-      <h3>Live Sessions</h3>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Recorded</th>
-            <th>Mixed</th>
-            <th>Mastered</th>
-          </tr>
-        </thead>
+      <section id="live-sessions" class="track-section">
+        <h3>Live Sessions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Recorded</th>
+              <th>Mixed</th>
+              <th>Mastered</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            
-          </tr>
-          <tr>
-            
-          </tr>
-          <!-- Add more songs here -->
-        </tbody>
-      </table>
-      <button class="see-more">See more</button>
+          <tbody>
+            <tr>
+              
+            </tr>
+            <tr>
+              
+            </tr>
+            <!-- Add more songs here -->
+          </tbody>
+        </table>
+        <button class="see-more">See more</button>
+      </section>
     </section>
   </main>
 
@@ -286,7 +290,8 @@
               trackElement.textContent = track.trackName;
 
               // Add trackElement to the appropriate section on your website
-              // ...
+              document.getElementById('studio-discography').appendChild(trackElement);
+              document.getElementById('live-sessions').appendChild(trackElement);
               sectionElement.appendChild(trackElement);
             });
 
