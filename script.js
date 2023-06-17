@@ -121,13 +121,15 @@ function addTrackToWebsite(track) {
     const sectionTable = document.querySelector(`table#${sectionPlacement.replace(' ', '-')}`);
     if (!sectionTable) return; // Skip track if section table not found
 
-    const newRow = sectionTable.insertRow(order - 1);
+    const tbody = sectionTable.querySelector('tbody');
+    if (!tbody) return; // Skip track if tbody not found
+
+    const newRow = tbody.insertRow(order - 1);
 
     // Create and append the track entry cell
     const trackEntryCell = newRow.insertCell(0);
     trackEntryCell.innerHTML = `
         <div class="song-entry">
-            <div class="title-container">
             <span>${trackName}</span>
             <div class="icon-container">
                 ${metadata === 'album' ? `
