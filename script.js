@@ -94,12 +94,12 @@ spotifyIcons.forEach(icon => {
 
 // Attach click event listeners to the YouTube icons
 youtubeIcons.forEach(icon => {
-  icon.addEventListener('click', handleYoutubeIconClick);
+    icon.addEventListener('click', handleYoutubeIconClick);
 });
 
 // Attach click event listeners to the YouTube album icons
 youtubeAlbumIcons.forEach(icon => {
-  icon.addEventListener('click', handleYoutubeAlbumClick);
+    icon.addEventListener('click', handleYoutubeAlbumClick);
 });
 
 // CSV file shenanigans
