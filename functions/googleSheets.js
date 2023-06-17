@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const Papa = require('papaparse');
 const express = require('express');
 const cors = require('cors');
+const credentials = require('/config/credentials.json');
 
 function parseCSV(csvData) {
   const parsedData = Papa.parse(csvData, { header: true }).data;

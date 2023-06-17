@@ -167,7 +167,6 @@
       songEntry.appendChild(newEmbedContainer);
     }
 
-
     function handleYoutubeAlbumClick(event) {
       event.preventDefault();
       const playlistId = this.getAttribute('data-playlist');
@@ -210,60 +209,92 @@
       icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 
+    // Read CSV file and generate tracks based on it
+    const Papa = require('papaparse');
+    const fs = require('fs');
 
-    function parseCSV(csvData) {
-      const parsedData = Papa.parse(csvData, { header: true }).data;
-      console.log('Parsed data:', parsedData);
-      return parsedData;
-    }
-    </script>
-    <!-- 
     function fetchTrackData() {
-      const serverlessFunctionURL = '/.netlify/functions/googleSheets';
+      // Specify the path to your local CSV file
+      const csvFilePath = '/resources/track-data.csv';
 
-      fetch(serverlessFunctionURL)
-        .then(response => response.json())
+      fetch(csvFilePath)
+        .then(response => response.text())
         .then(csvData => {
-          // Parse CSV data
-          const data = parseCSV(csvData);
+          // Parse the CSV data using Papa Parse
+          const parsedData = Papa.parse(csvData, { header: true }).data;
 
-          if (typeof data !== 'object') {
-            console.error('Invalid data format. Expected an object.');
+          if (!Array.isArray(parsedData)) {
+            console.error('Invalid data format. Expected an array.');
             return;
           }
 
-          Object.entries(data).forEach(([sectionName, tracks]) => {
-            if (!Array.isArray(tracks)) {
-              console.error(`Invalid data format for section "${sectionName}". Expected an array.`);
+          const trackOrders = {
+            'Studio Discography': [],
+            'Live Sessions': [],
+          };
+
+          parsedData.forEach(entry => {
+            const sectionPlacement = entry.sectionPlacement;
+            if (!trackOrders[sectionPlacement]) {
+              console.error(`Invalid section placement "${sectionPlacement}".`);
               return;
             }
 
-            // Process the received track data and dynamically add tracks to your website
-            Object.entries(data).forEach(([sectionName, tracks]) => {
-              // Create a section element for each section
-              const sectionElement = document.createElement('section');
-              sectionElement.className = 'track-section';
-              sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
+            const {
+              trackName,
+              metadata,
+              spotifyURI,
+              youtubeTrackID,
+              order,
+              recorded,
+              mixed,
+              mastered,
+            } = entry;
 
-              // Create a heading for the section
-              const headingElement = document.createElement('h2');
-              headingElement.textContent = sectionName;
-              sectionElement.appendChild(headingElement);
+            if (spotifyURI === 'null' && youtubeTrackID === 'null') {
+              return;
+            }
 
-              // Add each track to the section
-              tracks.forEach(track => {
-                const trackElement = document.createElement('div');
-                trackElement.className = 'track';
-                trackElement.textContent = track.trackName;
-
-                // Add trackElement to the appropriate section on your website
-                // ...
-                sectionElement.appendChild(trackElement);
-              });
-
-              // Add the section to the page
-              document.getElementById('track-list').appendChild(sectionElement);
+            trackOrders[sectionPlacement].push({
+              order: parseInt(order),
+              trackName,
+              metadata,
+              spotifyURI,
+              youtubeTrackID,
+              recorded: recorded === 'TRUE',
+              mixed: mixed === 'TRUE',
+              mastered: mastered === 'TRUE',
             });
+          });
+
+          Object.values(trackOrders).forEach(section => {
+            section.sort((a, b) => a.order - b.order);
+          });
+
+          Object.entries(trackOrders).forEach(([sectionName, tracks]) => {
+            // Create a section element for each section
+            const sectionElement = document.createElement('section');
+            sectionElement.className = 'track-section';
+            sectionElement.id = sectionName.replace(/\s+/g, '-').toLowerCase();
+
+            // Create a heading for the section
+            const headingElement = document.createElement('h2');
+            headingElement.textContent = sectionName;
+            sectionElement.appendChild(headingElement);
+
+            // Add each track to the section
+            tracks.forEach(track => {
+              const trackElement = document.createElement('div');
+              trackElement.className = 'track';
+              trackElement.textContent = track.trackName;
+
+              // Add trackElement to the appropriate section on your website
+              // ...
+              sectionElement.appendChild(trackElement);
+            });
+
+            // Add the section to the page
+            document.getElementById('track-list').appendChild(sectionElement);
           });
         })
         .catch(error => {
@@ -272,52 +303,8 @@
     }
 
     // Call the fetchTrackData function to fetch and process track data
-    fetchTrackData(); -->
-    <script>
-      function fetchTrackData() {
-        return fetch('/.netlify/functions/googleSheets')
-          .then((response) => response.json())
-          .then((data) => {
-            const csvData = data.csvData;
-            const parsedData = parseCSV(csvData);
-            const trackOrders = {};
+    fetchTrackData();
 
-            parsedData.forEach(({
-              trackName,
-              metadata,
-              spotifyURI,
-              youtubeTrackID,
-              sectionPlacement,
-              order,
-              recorded,
-              mixed,
-              mastered
-            }) => {
-              if (!trackOrders[sectionPlacement]) {
-                trackOrders[sectionPlacement] = [];
-              }
-
-              trackOrders[sectionPlacement].push({
-                order,
-                trackName,
-                metadata,
-                spotifyURI,
-                youtubeTrackID,
-                recorded,
-                mixed,
-                mastered
-              });
-            });
-            console.log('Test log message');
-            console.log('Track Orders:', trackOrders);
-
-            return trackOrders;
-          })
-          .catch((error) => {
-            console.error('Error fetching track data:', error);
-          });
-      }
-fetchTrackData();
   </script>
 </body>
 
