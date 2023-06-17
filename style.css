@@ -126,6 +126,10 @@ tr {
   border-bottom: 2px solid #424242;
 }
 
+tr.thead {
+  border-bottom: 2px solid white;
+}
+
 .checkmark, .checkmark-off, .checkmark-recorded, .checkmark-mixed, .checkmark-mastered {
   vertical-align: middle;
 }
