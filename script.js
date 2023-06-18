@@ -184,7 +184,9 @@ function addTrackToWebsite(track) {
 // See more buttons
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
+    const tables = document.querySelectorAll('table');
+
     tables.forEach(table => {
         const tableRows = table.querySelectorAll('tbody tr');
         tableRows.forEach((row, index) => {
@@ -194,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });  
 
-  const tables = document.querySelectorAll('table');
+  
 
   tables.forEach(table => {
     const tableRows = table.querySelectorAll('tbody tr');
