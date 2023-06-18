@@ -181,26 +181,28 @@ function addTrackToWebsite(track) {
     });
 }
 
-// See more buttons
+  // Get the "See more" buttons
+  const seeMoreButtons = document.querySelectorAll('.see-more');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const tables = document.querySelectorAll('table');
+  // Attach click event listeners to the "See more" buttons
+  seeMoreButtons.forEach(button => {
+    button.addEventListener('click', toggleTableRows);
+  });
 
-    tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr');
-      tableRows.forEach((row, index) => {
-        if (index > 1) {
-          row.classList.add('hidden');
-        }
+  // Function to toggle table rows visibility
+  function toggleTableRows(event) {
+    const table = this.previousElementSibling;
+    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+    const buttonText = this.textContent;
+
+    if (tableRows.length > 0) {
+      tableRows.forEach(row => {
+        row.classList.toggle('hidden');
       });
-  
-      const button = table.nextElementSibling;
-      const buttonText = button.textContent;
-      if (tableRows.length > 2) {
-        button.textContent = buttonText === 'See more' ? 'See less' : 'See more';
-      }
-    });
-});
+
+      this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
+    }
+  }
 
   
 
