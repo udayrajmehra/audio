@@ -180,12 +180,12 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-//NEW SHIT 2
+//NEW SHIT 1
 document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
     tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr');
+      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
       const button = table.nextElementSibling;
   
       table.classList.add('collapsed');
@@ -209,4 +209,5 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
+
   
