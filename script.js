@@ -180,7 +180,7 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-//NEW SHIT
+//NEW SHIT 2
 document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
@@ -188,15 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const tableRows = table.querySelectorAll('tbody tr');
       const button = table.nextElementSibling;
   
+      table.classList.add('collapsed');
       tableRows.forEach((row, index) => {
         if (index >= 2) {
           row.classList.add('hidden');
         }
-      });
-  
-      table.classList.add('collapsed');
-      tableRows.forEach((row, index) => {
-        row.classList.toggle('hidden', index >= 2);
       });
   
       button.addEventListener('click', function() {
@@ -213,3 +209,4 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
+  
