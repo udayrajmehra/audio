@@ -180,26 +180,28 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-//NEW SHIT1
+//NEW SHIT
 document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
     tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+      const tableRows = table.querySelectorAll('tbody tr');
+      const tableHider = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
       const button = table.nextElementSibling;
   
-      table.classList.add('collapsed');
-      if (tableRows.length > 0) {
-        tableRows.forEach(row => {
-          row.classList.toggle('hidden');
-        });
+      tableHider.classList.add('collapsed');
+      tableRows.forEach((row, index) => {
+        if (index >= 2) {
+          row.classList.add('hidden');
+        }
+      });
   
       button.addEventListener('click', function() {
         table.classList.toggle('collapsed');
         const isCollapsed = table.classList.contains('collapsed');
   
         tableRows.forEach((row, index) => {
-          row.classList.toggle('hidden', isCollapsed && tableRows.length > 0);
+          row.classList.toggle('hidden', isCollapsed && index >= 2);
         });
   
         this.textContent = isCollapsed ? 'See more' : 'See less';
