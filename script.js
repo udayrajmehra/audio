@@ -185,11 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
     tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+      const tableRows = table.querySelectorAll('tbody tr');
       const button = table.nextElementSibling;
   
-      tableRows.forEach(row => {
-        row.classList.add('hidden');
+      tableRows.forEach((row, index) => {
+        if (index >= 2) {
+          row.classList.add('hidden');
+        }
       });
   
       table.classList.add('collapsed');
@@ -198,8 +200,10 @@ document.addEventListener('DOMContentLoaded', function() {
         table.classList.toggle('collapsed');
         const isCollapsed = table.classList.contains('collapsed');
   
-        tableRows.forEach(row => {
-          row.classList.toggle('hidden', isCollapsed);
+        tableRows.forEach((row, index) => {
+          if (index >= 2) {
+            row.classList.toggle('hidden', isCollapsed);
+          }
         });
   
         this.textContent = isCollapsed ? 'See more' : 'See less';
@@ -208,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
+  
   
   
   
