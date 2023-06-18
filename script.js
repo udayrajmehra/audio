@@ -188,27 +188,31 @@ function addTrackToWebsite(track) {
     button.addEventListener('click', toggleTableRows);
   });
 
-  // Function to toggle table rows visibility
-  function toggleTableRows(event) {
+function onLoadHider() {
+    $('#studio-discography tr').classList.toggle('hidden');
+    $('#studio-discography tr:lt(3)').classList.toggle('hidden');
+
+    $('#live-sessions tr').classList.toggle('hidden');
+    $('#live-sessions tr:lt(3)').classList.toggle('hidden');
+}
+
+window.onload = onLoadHider;
+
+    // Function to toggle table rows visibility
+    function toggleTableRows(event) {
 
     const table = this.previousElementSibling;
     const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
     const buttonText = this.textContent;
 
-    $('#studio-discography tr').hide();
-    $('#studio-discography tr:lt(2)').show();
-
-    $('#live-sessions tr').hide();
-    $('#live-sessions tr:lt(2)').show();
-
     if (tableRows.length > 0) {
-      tableRows.forEach(row => {
+        tableRows.forEach(row => {
         row.classList.toggle('hidden');
-      });
+        });
 
-      this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
+        this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
     }
-  }//SHITER
+    }//SHITER2
   
 
   
