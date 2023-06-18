@@ -185,10 +185,6 @@ button.see-more {
   display: none;
 }
 
-.collapsed {
-  display: none;
-}
-
 footer {
   text-align: center;
   background-color: #292929;

@@ -180,34 +180,28 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-//NEW SHITE
-document.addEventListener('DOMContentLoaded', function() {
-    const tables = document.querySelectorAll('table');
-  
-    tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr');
-      const button = table.nextElementSibling;
-  
-      tableRows.forEach((row, index) => {
-        if (index >= 2) {
-          row.classList.add('collapsed');
-        }
-      });
-  
-      button.addEventListener('click', function() {
-        table.classList.toggle('collapsed');
-        const isCollapsed = table.classList.contains('collapsed');
-  
-        tableRows.forEach((row, index) => {
-          row.classList.toggle('hidden', isCollapsed && index >= 2);
-        });
-  
-        this.textContent = isCollapsed ? 'See more' : 'See less';
-      });
-  
-      button.textContent = 'See more';
-    });
+  // Get the "See more" buttons
+  const seeMoreButtons = document.querySelectorAll('.see-more');
+
+  // Attach click event listeners to the "See more" buttons
+  seeMoreButtons.forEach(button => {
+    button.addEventListener('click', toggleTableRows);
   });
+
+  // Function to toggle table rows visibility
+  function toggleTableRows(event) {
+    const table = this.previousElementSibling;
+    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+    const buttonText = this.textContent;
+
+    if (tableRows.length > 0) {
+      tableRows.forEach(row => {
+        row.classList.toggle('hidden');
+      });
+
+      this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
+    }
+  }
   
 
   
