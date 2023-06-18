@@ -192,34 +192,20 @@ button.addEventListener('click', toggleTableRows);
 });
 
 // Function to toggle table rows visibility
-document.addEventListener('DOMContentLoaded', function() {
-    var seeMoreButtons = document.querySelectorAll('.see-more');
-    
-    seeMoreButtons.forEach(function(button) {
-      var table = button.previousElementSibling;
-      var rows = table.querySelectorAll('tbody tr');
-      var hiddenRows = Array.from(rows).slice(2); // Exclude the first two rows
-      
-      // Hide the additional rows on page load
-      hiddenRows.forEach(function(row) {
-        row.classList.add('hidden');
-      });
-      
-      // Toggle visibility of additional rows on button click
-      button.addEventListener('click', function() {
-        hiddenRows.forEach(function(row) {
-          row.classList.toggle('hidden');
+function toggleTableRows(event) {
+    const table = this.previousElementSibling;
+    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+    const buttonText = this.textContent;
+
+    if (tableRows.length > 0) {
+        tableRows.forEach(row => {
+        row.classList.toggle('hidden');
         });
-        
-        // Toggle button text
-        if (button.textContent === 'See more') {
-          button.textContent = 'See less';
-        } else {
-          button.textContent = 'See more';
-        }
-      });
-    });
-  });
-  
+
+        this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
+    }
+}
+
+
 
 
