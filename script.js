@@ -180,12 +180,12 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-//NEW SHIT 1
+//NEW SHIT 2
 document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
     tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+      const tableRows = table.querySelectorAll('tbody tr');
       const button = table.nextElementSibling;
   
       table.classList.add('collapsed');
@@ -200,7 +200,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const isCollapsed = table.classList.contains('collapsed');
   
         tableRows.forEach((row, index) => {
-          row.classList.toggle('hidden', isCollapsed && index >= 2);
+          if (index >= 2) {
+            row.classList.toggle('hidden', isCollapsed);
+          }
         });
   
         this.textContent = isCollapsed ? 'See more' : 'See less';
@@ -209,5 +211,4 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
-
   
