@@ -181,28 +181,28 @@ function addTrackToWebsite(track) {
     });
 }
 
-  // Get the "See more" buttons
-  const seeMoreButtons = document.querySelectorAll('.see-more');
-
-  // Attach click event listeners to the "See more" buttons
-  seeMoreButtons.forEach(button => {
-    button.addEventListener('click', toggleTableRows);
-  });
-
-  // Function to toggle table rows visibility
-  function toggleTableRows(event) {
-    const table = this.previousElementSibling;
-    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-    const buttonText = this.textContent;
-
-    if (tableRows.length > 0) {
+document.addEventListener('DOMContentLoaded', function() {
+    const tables = document.querySelectorAll('table');
+  
+    tables.forEach(table => {
+      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+      const button = table.nextElementSibling;
+  
       tableRows.forEach(row => {
-        row.classList.toggle('hidden');
+        row.classList.add('hidden');
       });
-
-      this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
-    }
-  }
+  
+      button.addEventListener('click', function() {
+        tableRows.forEach(row => {
+          row.classList.toggle('hidden');
+        });
+  
+        this.textContent = table.classList.contains('collapsed') ? 'See less' : 'See more';
+        table.classList.toggle('collapsed');
+      });
+    });
+  });
+  
   
   
 
