@@ -189,6 +189,19 @@ function addTrackToWebsite(track) {
     button.addEventListener('click', toggleTableRows);
   });
 
+  function pageLoadHide() {
+    const table = this.previousElementSibling;
+    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+
+    if (tableRows.length > 0) {
+        tableRows.forEach(row => {
+          row.classList.toggle('hidden');
+        });  
+    }
+  }
+
+  window.onload = pageLoadHide;
+
   // Function to toggle table rows visibility
   function toggleTableRows(event) {
     const table = this.previousElementSibling;
