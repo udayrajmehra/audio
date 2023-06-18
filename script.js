@@ -186,35 +186,25 @@ window.addEventListener('DOMContentLoaded', function() {
   
     tables.forEach(table => {
       const tableRows = table.querySelectorAll('tbody tr');
+      const button = table.nextElementSibling;
   
       if (tableRows.length > 2) {
+        table.classList.add('collapsible');
         tableRows.forEach((row, index) => {
           if (index > 1) {
             row.classList.add('hidden');
           }
         });
   
-        const button = document.createElement('button');
-        button.className = 'see-more';
-        button.textContent = 'See more';
-  
         button.addEventListener('click', function() {
-          tableRows.forEach((row, index) => {
-            if (index > 1) {
-              row.classList.toggle('hidden');
-            }
-          });
-  
-          button.textContent = button.textContent === 'See more' ? 'See less' : 'See more';
+          table.classList.toggle('collapsed');
         });
-  
-        table.insertAdjacentElement('afterend', button);
       } else {
-        const button = table.nextElementSibling;
         button.style.display = 'none'; // Hide the button if there are no more rows to show
       }
     });
   });
+  
   
   
 

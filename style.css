@@ -187,13 +187,26 @@ button.see-more:hover {
 }
 
 /* See more hidden button */
-.hidden {
+table tbody tr.hidden {
   display: none;
 }
 
-tbody tr.hidden {
+table.collapsible + .see-more {
   display: none;
 }
+
+table.collapsible.collapsed ~ .see-more {
+  display: block;
+}
+
+table.collapsed + .see-more::after {
+  content: "See more";
+}
+
+table:not(.collapsed) + .see-more::after {
+  content: "See less";
+}
+
 
 footer {
   text-align: center;
