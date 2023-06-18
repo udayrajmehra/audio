@@ -180,16 +180,14 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-//NEW SHIT
+//NEW SHIT1
 document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
     tables.forEach(table => {
       const tableRows = table.querySelectorAll('tbody tr');
-      const tableHider = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
       const button = table.nextElementSibling;
   
-      tableHider.classList.add('collapsed');
       tableRows.forEach((row, index) => {
         if (index >= 2) {
           row.classList.add('hidden');
@@ -197,11 +195,15 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   
       button.addEventListener('click', function() {
-        table.classList.toggle('collapsed');
-        const isCollapsed = table.classList.contains('collapsed');
+        const visibleRows = table.querySelectorAll('tbody tr:not(.hidden)');
+        const isCollapsed = visibleRows.length <= 2;
   
         tableRows.forEach((row, index) => {
-          row.classList.toggle('hidden', isCollapsed && index >= 2);
+          if (isCollapsed && index >= 2) {
+            row.classList.add('hidden');
+          } else {
+            row.classList.remove('hidden');
+          }
         });
   
         this.textContent = isCollapsed ? 'See more' : 'See less';
@@ -210,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
+  
   
 
   
