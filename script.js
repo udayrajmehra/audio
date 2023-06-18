@@ -180,7 +180,7 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-
+//NEW SHIT
 document.addEventListener('DOMContentLoaded', function() {
     const tables = document.querySelectorAll('table');
   
@@ -213,16 +213,3 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
-  
-  
-  
-  
-  
-  
-  
-
-  
-
-
-
-
