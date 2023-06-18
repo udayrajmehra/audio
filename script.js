@@ -195,15 +195,16 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   
       table.classList.add('collapsed');
+      tableRows.forEach((row, index) => {
+        row.classList.toggle('hidden', index >= 2);
+      });
   
       button.addEventListener('click', function() {
         table.classList.toggle('collapsed');
         const isCollapsed = table.classList.contains('collapsed');
   
         tableRows.forEach((row, index) => {
-          if (index >= 2) {
-            row.classList.toggle('hidden', isCollapsed);
-          }
+          row.classList.toggle('hidden', isCollapsed && index >= 2);
         });
   
         this.textContent = isCollapsed ? 'See more' : 'See less';
@@ -212,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = 'See more';
     });
   });
+  
   
   
   
