@@ -195,8 +195,11 @@ function addTrackToWebsite(track) {
     const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
     const buttonText = this.textContent;
 
-    $('table tr').hide();
-    $('table tr:lt(2)').show();
+    $('#studio-discography tr').hide();
+    $('#studio-discography tr:lt(2)').show();
+
+    $('#live-sessions tr').hide();
+    $('#live-sessions tr:lt(2)').show();
 
     if (tableRows.length > 0) {
       tableRows.forEach(row => {
