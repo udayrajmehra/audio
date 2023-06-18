@@ -186,6 +186,11 @@ button.see-more:hover {
   transition: 0.2s;
 }
 
+/* See more hidden button */
+.hidden {
+  display: none;
+}
+
 footer {
   text-align: center;
   background-color: #292929;
