@@ -192,20 +192,23 @@ document.addEventListener('DOMContentLoaded', function() {
         row.classList.add('hidden');
       });
   
+      table.classList.add('collapsed');
+  
       button.addEventListener('click', function() {
+        table.classList.toggle('collapsed');
+        const isCollapsed = table.classList.contains('collapsed');
+  
         tableRows.forEach(row => {
-          row.classList.toggle('hidden');
+          row.classList.toggle('hidden', isCollapsed);
         });
   
-        this.textContent = table.classList.contains('collapsed') ? 'See more' : 'See less';
-        table.classList.toggle('collapsed');
+        this.textContent = isCollapsed ? 'See more' : 'See less';
       });
   
-      // Hide the rows initially
-      table.classList.add('collapsed');
       button.textContent = 'See more';
     });
   });
+  
   
   
   
