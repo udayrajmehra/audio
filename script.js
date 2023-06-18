@@ -197,11 +197,16 @@ document.addEventListener('DOMContentLoaded', function() {
           row.classList.toggle('hidden');
         });
   
-        this.textContent = table.classList.contains('collapsed') ? 'See less' : 'See more';
+        this.textContent = table.classList.contains('collapsed') ? 'See more' : 'See less';
         table.classList.toggle('collapsed');
       });
+  
+      // Hide the rows initially
+      table.classList.add('collapsed');
+      button.textContent = 'See more';
     });
   });
+  
   
   
   
