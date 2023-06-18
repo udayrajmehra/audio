@@ -184,6 +184,16 @@ function addTrackToWebsite(track) {
 // See more buttons
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    tables.forEach(table => {
+        const tableRows = table.querySelectorAll('tbody tr');
+        tableRows.forEach((row, index) => {
+        if (index > 1) {
+            row.classList.add('hidden');
+        }
+        });
+    });  
+
   const tables = document.querySelectorAll('table');
 
   tables.forEach(table => {
@@ -200,17 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = buttonText === 'See more' ? 'See less' : 'See more';
     }
   });
-  
-    const tables = document.querySelectorAll('table');
 
-    tables.forEach(table => {
-        const tableRows = table.querySelectorAll('tbody tr');
-        tableRows.forEach((row, index) => {
-        if (index > 1) {
-            row.classList.add('hidden');
-        }
-        });
-    });
+    
 });
 
   
