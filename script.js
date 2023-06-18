@@ -180,13 +180,29 @@ function addTrackToWebsite(track) {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
 }
-  // Get the "See more" buttons
-  const seeMoreButtons = document.querySelectorAll('.see-more');
 
-  // Attach click event listeners to the "See more" buttons
-  seeMoreButtons.forEach(button => {
+    const studioDiscography = document.querySelectorAll('#studio-discography');  
+    window.addEventListener('load', studioDiscography);
+
+    function onLoadHider(event) {
+        const table = this.previousElementSibling;
+        const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+        const buttonText = this.textContent;
+
+        if (tableRows.length > 0) {
+            tableRows.forEach(row => {
+            row.classList.toggle('hidden');
+            });
+        }   
+    }   
+
+    // Get the "See more" buttons
+    const seeMoreButtons = document.querySelectorAll('.see-more');
+
+    // Attach click event listeners to the "See more" buttons
+    seeMoreButtons.forEach(button => {
     button.addEventListener('click', toggleTableRows);
-  });
+    });
 
     // Function to toggle table rows visibility
     function toggleTableRows(event) {
