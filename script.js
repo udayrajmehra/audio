@@ -188,16 +188,6 @@ function addTrackToWebsite(track) {
     button.addEventListener('click', toggleTableRows);
   });
 
-    function onLoadHider() {
-        $('#studio-discography tr').classList.toggle('hidden');
-        //$('#studio-discography tr:lt(3)').classList.toggle('hidden');
-
-        $('#live-sessions tr').classList.toggle('hidden');
-        //$('#live-sessions tr:lt(3)').classList.toggle('hidden');
-    }
-
-    window.onload = onLoadHider;
-
     // Function to toggle table rows visibility
     function toggleTableRows(event) {
 
