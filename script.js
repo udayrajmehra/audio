@@ -194,7 +194,10 @@ window.addEventListener('DOMContentLoaded', function() {
           }
         });
   
-        const button = table.nextElementSibling;
+        const button = document.createElement('button');
+        button.className = 'see-more';
+        button.textContent = 'See more';
+  
         button.addEventListener('click', function() {
           tableRows.forEach((row, index) => {
             if (index > 1) {
@@ -204,12 +207,15 @@ window.addEventListener('DOMContentLoaded', function() {
   
           button.textContent = button.textContent === 'See more' ? 'See less' : 'See more';
         });
+  
+        table.insertAdjacentElement('afterend', button);
       } else {
         const button = table.nextElementSibling;
         button.style.display = 'none'; // Hide the button if there are no more rows to show
       }
     });
   });
+  
   
 
   
