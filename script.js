@@ -1,17 +1,3 @@
-// Hide all but first two tracks per table on page load
-document.addEventListener('DOMContentLoaded', function() {
-    const tables = document.querySelectorAll('table');
-  
-    tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr');
-      tableRows.forEach((row, index) => {
-        if (index > 1) {
-          row.classList.add('hidden');
-        }
-      });
-    });
-  });
-
 // Get all the Spotify and YouTube icons
 const spotifyIcons = document.querySelectorAll('.spotify-icon');
 const youtubeIcons = document.querySelectorAll('.youtube-icon');
