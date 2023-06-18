@@ -181,41 +181,36 @@ function addTrackToWebsite(track) {
     });
 }
 
-  // Get the "See more" buttons
-  const seeMoreButtons = document.querySelectorAll('.see-more');
-
-  // Attach click event listeners to the "See more" buttons
-  seeMoreButtons.forEach(button => {
-    button.addEventListener('click', toggleTableRows);
+window.addEventListener('DOMContentLoaded', function() {
+    const tables = document.querySelectorAll('table');
+  
+    tables.forEach(table => {
+      const tableRows = table.querySelectorAll('tbody tr');
+  
+      if (tableRows.length > 2) {
+        tableRows.forEach((row, index) => {
+          if (index > 1) {
+            row.classList.add('hidden');
+          }
+        });
+  
+        const button = table.nextElementSibling;
+        button.addEventListener('click', function() {
+          tableRows.forEach((row, index) => {
+            if (index > 1) {
+              row.classList.toggle('hidden');
+            }
+          });
+  
+          button.textContent = button.textContent === 'See more' ? 'See less' : 'See more';
+        });
+      } else {
+        const button = table.nextElementSibling;
+        button.style.display = 'none'; // Hide the button if there are no more rows to show
+      }
+    });
   });
-
-  function pageLoadHide() {
-    const table = this.previousElementSibling;
-    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-
-    if (tableRows.length > 0) {
-        tableRows.forEach(row => {
-          row.classList.toggle('hidden');
-        });  
-    }
-  }
-
-  window.onload = pageLoadHide;
-
-  // Function to toggle table rows visibility
-  function toggleTableRows(event) {
-    const table = this.previousElementSibling;
-    const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-    const buttonText = this.textContent;
-
-    if (tableRows.length > 0) {
-      tableRows.forEach(row => {
-        row.classList.toggle('hidden');
-      });
-
-      this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
-    }
-  }
+  
 
   
 
