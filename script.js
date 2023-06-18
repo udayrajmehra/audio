@@ -190,9 +190,13 @@ function addTrackToWebsite(track) {
 
   // Function to toggle table rows visibility
   function toggleTableRows(event) {
+
     const table = this.previousElementSibling;
     const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
     const buttonText = this.textContent;
+
+    $('table tr').hide();
+    $('table tr:lt(2)').show();
 
     if (tableRows.length > 0) {
       tableRows.forEach(row => {
@@ -201,7 +205,7 @@ function addTrackToWebsite(track) {
 
       this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
     }
-  }
+  }//SHITER
   
 
   
