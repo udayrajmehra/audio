@@ -181,30 +181,29 @@ function addTrackToWebsite(track) {
     });
 }  
 
-document.addEventListener('DOMContentLoaded', function() {
-    const tables = document.querySelectorAll('#studio-discography');
-  
-    tables.forEach(table => {
-      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-  
-      tableRows.forEach(row => {
-        row.classList.add('hidden');
-      });
+    // Get the "See more" buttons
+    const seeMoreButtons = document.querySelectorAll('.see-more');
+
+    // Attach click event listeners to the "See more" buttons
+    seeMoreButtons.forEach(button => {
+    button.addEventListener('click', toggleTableRows);
     });
-  
-    toggleTableRows(); // Call the function on page load
-  
-    function toggleTableRows() {
-      const tableRows = document.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-  
-      if (tableRows.length > 0) {
-        tableRows.forEach(row => {
-          row.classList.toggle('hidden');
-        });
-      }
+
+    // Function to toggle table rows visibility
+    function toggleTableRows(event) {
+
+        const table = this.previousElementSibling;
+        const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+        const buttonText = this.textContent;
+
+        if (tableRows.length > 0) {
+            tableRows.forEach(row => {
+            row.classList.toggle('hidden');
+            });
+
+            this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
+        }
     }
-  });
-  
   
 
   
