@@ -189,27 +189,37 @@ seeMoreButtons.forEach(button => {
   button.addEventListener('click', toggleTableRows);
 });
 
-// Function to toggle table rows visibility
-function toggleTableRows(event) {
-  const table = this.previousElementSibling;
-  const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-  const buttonText = this.textContent;
-
-  // Hide all rows except the first two on initial load
-  tableRows.forEach((row, index) => {
-    if (index >= 2) {
-      row.classList.add('hidden');
-    }
-  });
-
-  if (tableRows.length > 0) {
-    tableRows.forEach(row => {
-      row.classList.toggle('hidden');
+window.onload = function() {
+    // Get all tables
+    const tables = document.querySelectorAll('table');
+  
+    tables.forEach(table => {
+      // Get all table rows except the first two
+      const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
+  
+      // Hide all table rows except the first two
+      tableRows.forEach(row => {
+        row.classList.add('hidden');
+      });
+  
+      // Add a 'See more' button to the table
+      const button = document.createElement('button');
+      button.textContent = 'See more';
+      table.parentNode.insertBefore(button, table.nextSibling);
+  
+      // Add a click event listener to the 'See more' button
+      button.addEventListener('click', function() {
+        // Toggle the visibility of the additional table rows
+        tableRows.forEach(row => {
+          row.classList.toggle('hidden');
+        });
+  
+        // Toggle the button text
+        this.textContent = this.textContent === 'See more' ? 'See less' : 'See more';
+      });
     });
-
-    this.textContent = buttonText === 'See more' ? 'See less' : 'See more';
-  }
-}
+  };
+  
 
   
 
