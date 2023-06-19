@@ -183,7 +183,7 @@ button.see-more {
 
 button.see-more:hover {
   background-color: #4acfa2;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .hidden {
