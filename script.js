@@ -181,14 +181,6 @@ function addTrackToWebsite(track) {
     });
 }  
 
-// Get the "See more" buttons
-const seeMoreButtons = document.querySelectorAll('.see-more');
-
-// Attach click event listeners to the "See more" buttons
-seeMoreButtons.forEach(button => {
-  button.addEventListener('click', toggleTableRows);
-});
-
 window.onload = function() {
     // Get all tables
     const tables = document.querySelectorAll('table');
