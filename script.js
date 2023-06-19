@@ -197,6 +197,7 @@ window.onload = function() {
       // Add a 'See more' button to the table
       const button = document.createElement('button');
       button.textContent = 'See more';
+      button.classList.add('see-more'); // Add 'see-more' class to the button
       table.parentNode.insertBefore(button, table.nextSibling);
   
       // Add a click event listener to the 'See more' button
