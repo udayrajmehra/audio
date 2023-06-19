@@ -179,22 +179,25 @@ function addTrackToWebsite(track) {
     youtubeAlbumIcons.forEach(icon => {
         icon.addEventListener('click', handleYoutubeAlbumClick);
     });
-}
+}  
 
-    const studioDiscography = document.querySelectorAll('#studio-discography');  
-    window.addEventListener('load', studioDiscography);
-
-    function onLoadHider(event) {
-        const table = this.previousElementSibling;
-        const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
-        const buttonText = this.textContent;
-
-        if (tableRows.length > 0) {
-            tableRows.forEach(row => {
-            row.classList.toggle('hidden');
-            });
-        }   
-    }   
+document.addEventListener('DOMContentLoaded', function() {
+    const tables = document.querySelectorAll('table');
+  
+    tables.forEach(table => {
+      const tableRows = table.querySelectorAll('tbody tr');
+      const firstTwoRows = Array.from(tableRows).slice(0, 2);
+  
+      tableRows.forEach(row => {
+        row.classList.add('hidden');
+      });
+  
+      firstTwoRows.forEach(row => {
+        row.classList.remove('hidden');
+      });
+    });
+  });
+  
 
     // Get the "See more" buttons
     const seeMoreButtons = document.querySelectorAll('.see-more');
