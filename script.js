@@ -182,7 +182,7 @@ function addTrackToWebsite(track) {
 }  
 
 document.addEventListener('DOMContentLoaded', function() {
-    const tables = document.querySelectorAll('table');
+    const tables = document.querySelectorAll('#studio-discography');
   
     tables.forEach(table => {
       const tableRows = table.querySelectorAll('tbody tr:not(:nth-child(-n+2))');
