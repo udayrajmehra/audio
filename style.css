@@ -334,7 +334,7 @@ section.parallax {
     display: flex;
     flex-direction: column;
     align-items: left;
-    padding-left: 17%;
+    padding-left: 0%;
   }
 }
 
