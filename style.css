@@ -342,7 +342,6 @@ section.parallax {
     width: 80%;
   }
   .parallax-text {
-    padding-right: 0px;
-    padding-left: 20px;
+    padding: 10%;
   }
 }
