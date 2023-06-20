@@ -295,10 +295,7 @@ section.parallax {
 }
 
 .title-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column; /* Add this line */
-  align-items: flex-start; /* Add this line */
+  padding: 30px;
 }
 
 .icon-container {
