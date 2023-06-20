@@ -286,6 +286,9 @@ section.parallax {
 }
 
 .song-entry {
+  padding-top: 10px;
+  padding-left: 41px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -296,7 +299,8 @@ section.parallax {
 }
 
 .title-container {
-  padding-top: 10px;
+  padding-right: 32px;
+  padding-top: 25px;
   padding-left: 41px;
 }
 
