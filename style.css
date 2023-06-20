@@ -136,6 +136,7 @@ tr {
 
 .checkmark, .checkmark-off, .checkmark-recorded, .checkmark-mixed, .checkmark-mastered {
   vertical-align: middle;
+  padding-left: 0px;
 }
 
 td.checkmark {
