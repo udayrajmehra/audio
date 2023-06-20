@@ -296,7 +296,8 @@ section.parallax {
 }
 
 .title-container {
-  padding: 30px;
+  padding-top: 10px;
+  padding-left: 41px;
 }
 
 .icon-container {
