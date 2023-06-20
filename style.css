@@ -229,6 +229,7 @@ section.parallax {
 
 .parallax {
   height: 500px;
+  border-radius: 5px;
   background-image: url("https://i.imgur.com/66m7FaB.png");
   background-repeat: no-repeat;
   background-size: cover;
