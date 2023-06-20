@@ -287,13 +287,6 @@ section.parallax {
   padding-top: 10px;
 }
 
-.song-entry {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding-left: 17%;
-}
-
 .song-title {
   margin-right: 10px;
 }
@@ -327,6 +320,7 @@ section.parallax {
   height: 24px;
 }
 
+/* Media Queries */
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -336,9 +330,13 @@ section.parallax {
   .parallax-text {
     padding: 3%;
   }
+  .song-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 17%;
+  }
 }
-
-/* Media Queries */
 
 /* Desktop */
 @media (min-width: 769px) {
@@ -347,5 +345,11 @@ section.parallax {
   }
   .parallax-text {
     padding: 10%;
+  }
+  .song-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 0%;
   }
 }
