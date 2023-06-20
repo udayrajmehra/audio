@@ -339,6 +339,13 @@ section.parallax {
     flex-direction: column;
     align-items: left;
     padding-left: 0%;
+    margin-left: -9%;
+  }
+  .embedBox {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 0%;
   }
 }
 
@@ -355,5 +362,11 @@ section.parallax {
     flex-direction: column;
     align-items: left;
     padding-left: 0%;
+  }
+  .embedBox {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 0%;
   }
 }
