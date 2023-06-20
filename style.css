@@ -127,6 +127,10 @@ tr {
   border-bottom: 2px solid #424242;
 }
 
+.tester {
+  background-color: #F5F5F5;
+}
+
 .checkmark, .checkmark-off, .checkmark-recorded, .checkmark-mixed, .checkmark-mastered {
   vertical-align: middle;
 }
