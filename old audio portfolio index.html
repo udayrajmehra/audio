@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="description" content="Uday's Audio Portfolio showcases his musical work as an Audio Engineer.">
+    <meta name="theme-color" content="#272726"/>
+    <link rel="icon" type="image/x-icon" href="resources/favicon_io/favicon.ico">
+    <title>Uday's Audio Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://open.spotifycdn.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" defer></script>
+    <script>
+      function toggleEmbed(embedId) {
+        const embeds = document.getElementsByClassName('embed-container');
+        for (let i = 0; i < embeds.length; i++) {
+          const embed = embeds[i];
+          if (embed.id === embedId) {
+            embed.classList.toggle('active-embed');
+          } else {
+            embed.classList.remove('active-embed');
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="header-content">
+        <!--<img style="max-width:100%; max-height:100%; align-self: flex-end;" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_White.png" alt="Spotify Logo">-->
+      </div>
+    </header>
+
+    <main>
+      <section class="parallax">
+        <div class="parallax-content">
+          <div class="parallax-text">
+            <h1 class="greeting">Hi, I'm Uday.</h1>
+            <h2>Check out this track I mastered:</h2>
+            <div style="margin-top:10px; height: 80px;" id="spotifyEmbed">
+              <iframe title="Featured Track" src="https://open.spotify.com/embed/track/3Dm5SUtOtGd2iKeJRC5E2s?utm_source=generator&theme=0" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <p style="margin-top:10px;">I'm a driven audio engineer dedicated to delivering exceptional results. With training from industry mentors and practical experience in recording music and mixing podcasts, I bring a professional and easygoing approach to every project.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects">
+        <div class="content-container">
+        <h2>Projects</h2>
+        <h3>Studio Discography</h3>
+        <p>A selection of my recent work with artists in a studio environment. The bubbles in each row show my involvement with the project (recorded, mixed, mastered).</p>
+        </div>
+        <table id="studio-discography">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Recorded</th>
+              <th>Mixed</th>
+              <th>Mastered</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr>
+            </tr>
+            <!-- Add more songs here ok -->
+          </tbody>
+        </table>
+      
+
+        <div class="content-container">
+        <h3>Live Sessions</h3>
+        <p>"Live" recordings similar to <a href="https://www.youtube.com/watch?v=ferZnZ0_rSM">NPR TinyDesk.</a> Recorded and filmed on location with minimal edits. The bubbles in each row show my involvement with the project (recorded, mixed, mastered).</p>
+        </div>
+        <table id="live-sessions">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Recorded</th>
+              <th>Mixed</th>
+              <th>Mastered</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
+            <!-- Add more songs here -->
+          </tbody>
+        </table>
+      
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2023 Uday Mehra</p>
+        <p class="footer-text">Photo by <a href="https://unsplash.com/@woods">Joe Woods</a> on Unsplash</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
